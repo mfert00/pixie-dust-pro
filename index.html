@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixie Dust Pro — Install</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --gold: #F0B429;
+    --navy: #0A1628;
+    --navy-mid: #142240;
+    --teal: #00C9B1;
+    --rose: #FF6B8A;
+    --white: #F8F5EE;
+    --muted: #8A99B3;
+    --border: rgba(240,180,41,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+  }
+
+  /* Stars */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 12%, rgba(240,180,41,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 90% 55%, rgba(167,139,250,0.4) 0%, transparent 100%);
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 680px; width: 100%;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .logo-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), #E8860A);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 0 24px rgba(240,180,41,0.45);
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%,100% { box-shadow: 0 0 24px rgba(240,180,41,0.45); }
+    50% { box-shadow: 0 0 40px rgba(240,180,41,0.7); }
+  }
+
+  .logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900; color: var(--gold);
+  }
+
+  .logo p { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+
+  /* Hero */
+  .hero {
+    text-align: center; margin-bottom: 40px;
+  }
+
+  .hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 12px;
+  }
+
+  .hero h2 span { color: var(--gold); }
+
+  .hero p {
+    font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto;
+  }
+
+  /* Features row */
+  .features {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .feature {
+    background: rgba(20,34,64,0.8);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 12px;
+    text-align: center;
+  }
+
+  .feature .f-icon { font-size: 22px; margin-bottom: 8px; }
+  .feature .f-label { font-size: 12px; font-weight: 600; color: var(--white); }
+  .feature .f-sub { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+  /* Bookmarklet drag target */
+  .drag-target-section {
+    background: rgba(20,34,64,0.85);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .drag-target-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: var(--white); margin-bottom: 8px;
+  }
+
+  .drag-target-section p {
+    font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6;
+  }
+
+  /* THE bookmarklet link — draggable */
+  #pdp-bookmarklet-link {
+    display: inline-flex;
+    align-items: center; gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--gold), #E8860A);
+    color: var(--navy);
+    font-size: 16px; font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: grab;
+    box-shadow: 0 4px 24px rgba(240,180,41,0.35);
+    transition: all 0.2s;
+    user-select: none;
+    border: 3px dashed transparent;
+  }
+
+  #pdp-bookmarklet-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(240,180,41,0.5);
+  }
+
+  #pdp-bookmarklet-link:active { cursor: grabbing; }
+
+  .drag-hint {
+    font-size: 12px; color: var(--muted);
+    margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  .drag-arrow { font-size: 18px; animation: bounce 1.5s ease-in-out infinite; }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  /* Steps */
+  .steps-card {
+    background: rgba(20,34,64,0.85);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+
+  .steps-card h3 {
+    font-size: 14px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 1.5px; margin-bottom: 20px;
+  }
+
+  .step {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .step:last-child { margin-bottom: 0; }
+
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), #E8860A);
+    color: var(--navy); font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .step-body { flex: 1; }
+  .step-body strong { color: var(--white); font-size: 14px; display: block; margin-bottom: 3px; }
+  .step-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .step-body code {
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 1px 6px; font-size: 12px; color: var(--teal);
+    font-family: monospace;
+  }
+
+  /* Platform tabs */
+  .platform-tabs {
+    display: flex; gap: 4px; margin-bottom: 20px;
+  }
+
+  .platform-tab {
+    padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: 1px solid var(--border);
+    background: transparent; color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .platform-tab.active {
+    background: rgba(240,180,41,0.1); color: var(--gold); border-color: rgba(240,180,41,0.3);
+  }
+
+  .platform-steps { display: none; }
+  .platform-steps.active { display: block; }
+
+  /* Warning */
+  .warning {
+    background: rgba(255,107,138,0.07);
+    border: 1px solid rgba(255,107,138,0.2);
+    border-radius: 10px; padding: 14px 18px;
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .warning strong { color: var(--rose); }
+
+  /* Privacy note */
+  .privacy {
+    background: rgba(0,201,177,0.06);
+    border: 1px solid rgba(0,201,177,0.18);
+    border-radius: 10px; padding: 14px 18px;
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    margin-top: 20px;
+  }
+
+  .privacy strong { color: var(--teal); }
+
+  /* Code fallback */
+  .code-fallback {
+    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 14px; font-family: monospace;
+    font-size: 11px; color: var(--teal); word-break: break-all;
+    line-height: 1.6; margin: 12px 0; max-height: 80px; overflow-y: auto;
+    text-align: left;
+  }
+
+  .copy-btn {
+    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    cursor: pointer; border: none;
+    background: rgba(240,180,41,0.15); color: var(--gold);
+    border: 1px solid rgba(240,180,41,0.3); transition: all 0.2s;
+  }
+
+  .copy-btn:hover { background: rgba(240,180,41,0.25); }
+
+  @media (max-width: 600px) {
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .hero h2 { font-size: 28px; }
+    .drag-target-section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="logo">
+    <div class="logo-icon">✦</div>
+    <div>
+      <h1>Pixie Dust Pro</h1>
+      <p>Disney Trip Intelligence</p>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h2>Plan smarter.<br><span>Visit happier.</span></h2>
+    <p>A free bookmarklet that adds real-time Lightning Lane availability,
+       live wait times, and first-timer strategy guides directly on top of
+       Disney's own website — using your existing Disney account.</p>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="f-icon">⚡</div>
+      <div class="f-label">Live LL Data</div>
+      <div class="f-sub">Real next-available times from Disney's servers</div>
+    </div>
+    <div class="feature">
+      <div class="f-icon">⏱</div>
+      <div class="f-label">Wait Times</div>
+      <div class="f-sub">All 4 parks updated every 5 minutes</div>
+    </div>
+    <div class="feature">
+      <div class="f-icon">🗺</div>
+      <div class="f-label">Strategy</div>
+      <div class="f-sub">Rope drop, park hop, and LL booking guides</div>
+    </div>
+    <div class="feature">
+      <div class="f-icon">🍽</div>
+      <div class="f-label">Dining Tips</div>
+      <div class="f-sub">Must-book restaurants and reservation strategy</div>
+    </div>
+  </div>
+
+  <!-- DRAG TARGET -->
+  <div class="drag-target-section">
+    <h3>Step 1 — Save the Bookmarklet</h3>
+    <p>Drag this button to your browser's bookmarks bar. On mobile, see the steps below.</p>
+
+    <!-- This href is populated by JS with the actual minified bookmarklet code -->
+    <a id="pdp-bookmarklet-link" href="#" title="Pixie Dust Pro — drag me to your bookmarks bar">
+      ✦ Pixie Dust Pro
+    </a>
+
+    <div class="drag-hint">
+      <span class="drag-arrow">↑</span>
+      Drag this up to your bookmarks bar
+    </div>
+  </div>
+
+  <!-- SETUP STEPS BY PLATFORM -->
+  <div class="steps-card">
+    <h3>Setup Instructions</h3>
+
+    <div class="platform-tabs">
+      <button class="platform-tab active" onclick="showPlatform('desktop')">🖥 Desktop</button>
+      <button class="platform-tab" onclick="showPlatform('iphone')">📱 iPhone</button>
+      <button class="platform-tab" onclick="showPlatform('android')">🤖 Android</button>
+    </div>
+
+    <!-- Desktop -->
+    <div class="platform-steps active" id="steps-desktop">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Show your bookmarks bar</strong>
+          <p>In Chrome: <code>Ctrl+Shift+B</code> (Windows) or <code>⌘+Shift+B</code> (Mac). In Safari: View → Show Favorites Bar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Drag the gold button to the bar</strong>
+          <p>Click and drag the "✦ Pixie Dust Pro" button above into your bookmarks bar. It will save as a bookmark automatically.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Go to Disney's Lightning Lane page</strong>
+          <p>Navigate to <code>disneyworld.disney.go.com/vas/</code> and sign in to your Disney account.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Click the bookmarklet</strong>
+          <p>Click "✦ Pixie Dust Pro" in your bookmarks bar. The overlay will appear over Disney's page with your live LL data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- iPhone -->
+    <div class="platform-steps" id="steps-iphone">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Copy the bookmarklet code</strong>
+          <p>Tap the button below to copy the code to your clipboard.</p>
+          <div class="code-fallback" id="code-display">Loading…</div>
+          <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Bookmark any page in Safari</strong>
+          <p>Tap the Share button (box with arrow), then "Add Bookmark". Save it as <strong style="color:#F8F5EE">Pixie Dust Pro</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Edit the bookmark's URL</strong>
+          <p>Open your Bookmarks, find "Pixie Dust Pro", and tap Edit. Delete the URL field entirely, then paste the code you copied.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Use it at Disney</strong>
+          <p>Go to <code>disneyworld.disney.go.com/vas/</code> and sign in. Tap the address bar, type <strong style="color:#F8F5EE">Pixie Dust</strong>, and tap the bookmark. Done!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Android -->
+    <div class="platform-steps" id="steps-android">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Copy the bookmarklet code</strong>
+          <div class="code-fallback">Same code as shown in the iPhone tab above — tap Copy Code there.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Bookmark this page in Chrome</strong>
+          <p>Tap the ⋮ menu → "Add to bookmarks". Save as <strong style="color:#F8F5EE">Pixie Dust Pro</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Edit the bookmark URL</strong>
+          <p>Open Chrome bookmarks → long-press "Pixie Dust Pro" → Edit. Replace the URL with the copied code.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Activate at Disney</strong>
+          <p>On <code>disneyworld.disney.go.com/vas/</code>, type <strong style="color:#F8F5EE">Pixie Dust</strong> in the address bar and tap the bookmark suggestion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning">
+    <strong>⚠️ Unofficial Tool</strong> — Pixie Dust Pro is not affiliated with or endorsed by The Walt Disney Company. Disney can change their APIs at any time. Use at your own risk and always use the official My Disney Experience app for actual bookings.
+  </div>
+
+  <div class="privacy">
+    <strong>🔒 Your privacy:</strong> The bookmarklet reads a temporary auth token that Disney stores in your browser after login. This token is only valid for 24 hours and is used solely to call Disney's own servers. No credentials, personal data, or tokens are ever transmitted to any third-party server.
+  </div>
+
+</div>
+
+<script>
+  // ── BUILD BOOKMARKLET HREF ──────────────────────────────────────────────────
+  // Replace this URL with wherever you host pixie-dust-pro.js
+  // (e.g. https://YOUR-USERNAME.github.io/pixie-dust-pro/pixie-dust-pro.js)
+  const HOSTED_JS_URL = 'https://mfert00.github.io/pixie-dust-pro/pixie-dust-pro.js';
+
+  // The bookmarklet dynamically loads the hosted JS file
+  // This way you can update the app without users re-installing the bookmarklet
+  const bookmarkletCode = `javascript:(function(){if(document.getElementById('pdp-overlay')){document.getElementById('pdp-overlay').style.display='flex';return;}var s=document.createElement('script');s.src='${HOSTED_JS_URL}?t='+Date.now();s.onerror=function(){alert('Pixie Dust Pro: Could not load. Check your connection.');};document.head.appendChild(s);})();`;
+
+  // Wire up the draggable link
+  document.getElementById('pdp-bookmarklet-link').href = bookmarkletCode;
+  document.getElementById('code-display').textContent = bookmarkletCode;
+
+  // ── PLATFORM TABS ─────────────────────────────────────────────────────────
+  function showPlatform(id) {
+    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.platform-steps').forEach(s => s.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(`steps-${id}`).classList.add('active');
+  }
+
+  // ── COPY CODE ──────────────────────────────────────────────────────────────
+  function copyCode() {
+    navigator.clipboard.writeText(bookmarkletCode).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied! ✓';
+      btn.style.background = 'rgba(0,201,177,0.15)';
+      btn.style.color = '#00C9B1';
+      btn.style.borderColor = 'rgba(0,201,177,0.3)';
+      setTimeout(() => {
+        btn.textContent = 'Copy Code';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2500);
+    });
+  }
+</script>
+</body>
+</html>
