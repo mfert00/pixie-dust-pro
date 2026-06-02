@@ -1,487 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pixie Dust Pro — Install</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixie Dust Pro — Install</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+    :root {
+        --gold: #F0B429;
+        --navy: #0A1628;
+        --teal: #00C9B1;
+        --rose: #FF6B8A;
+        --white: #F8F5EE;
+        --muted: #8A99B3;
+        --border: rgba(240, 180, 41, 0.18);
+    }
 
-  :root {
-    --gold: #F0B429;
-    --navy: #0A1628;
-    --navy-mid: #142240;
-    --teal: #00C9B1;
-    --rose: #FF6B8A;
-    --white: #F8F5EE;
-    --muted: #8A99B3;
-    --border: rgba(240,180,41,0.18);
-  }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background: var(--navy);
+        color: var(--white);
+        font-family: 'DM Sans', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px 60px;
+    }
 
-  body {
-    background: var(--navy);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px 60px;
-  }
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.5) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 38% 12%, rgba(240, 180, 41, 0.4) 0%, transparent 100%), radial-gradient(1px 1px at 65% 72%, rgba(255, 255, 255, 0.4) 0%, transparent 100%), radial-gradient(1px 1px at 82% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+        z-index: 0;
+    }
 
-  /* Stars */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; pointer-events: none;
-    background-image:
-      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 38% 12%, rgba(240,180,41,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 65% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 82% 25%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 22% 78%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 90% 55%, rgba(167,139,250,0.4) 0%, transparent 100%);
-    z-index: 0;
-  }
+    .wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 660px;
+        width: 100%;
+    }
 
-  .wrap {
-    position: relative; z-index: 1;
-    max-width: 680px; width: 100%;
-  }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 36px;
+    }
 
-  /* Logo */
-  .logo {
-    display: flex; align-items: center; gap: 16px;
-    margin-bottom: 40px;
-  }
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), #E8860A);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 0 24px rgba(240, 180, 41, 0.45);
+        animation: glow 3s ease-in-out infinite;
+    }
 
-  .logo-icon {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), #E8860A);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-    box-shadow: 0 0 24px rgba(240,180,41,0.45);
-    animation: glow 3s ease-in-out infinite;
-  }
+    @keyframes glow {
+        0%, 100% {
+            box-shadow: 0 0 24px rgba(240, 180, 41, 0.45);
+        }
 
-  @keyframes glow {
-    0%,100% { box-shadow: 0 0 24px rgba(240,180,41,0.45); }
-    50% { box-shadow: 0 0 40px rgba(240,180,41,0.7); }
-  }
+        50% {
+            box-shadow: 0 0 40px rgba(240, 180, 41, 0.7);
+        }
+    }
 
-  .logo h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 900; color: var(--gold);
-  }
+    .logo h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 26px;
+        font-weight: 900;
+        color: var(--gold);
+    }
 
-  .logo p { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+    .logo p {
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 3px;
+    }
 
-  /* Hero */
-  .hero {
-    text-align: center; margin-bottom: 40px;
-  }
+    .hero {
+        text-align: center;
+        margin-bottom: 36px;
+    }
 
-  .hero h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px; font-weight: 900;
-    color: var(--white); line-height: 1.1; margin-bottom: 12px;
-  }
+    .hero h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
 
-  .hero h2 span { color: var(--gold); }
+    .hero h2 span {
+        color: var(--gold);
+    }
 
-  .hero p {
-    font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto;
-  }
+    .hero p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto;
+    }
 
-  /* Features row */
-  .features {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-    margin-bottom: 36px;
-  }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 32px;
+    }
 
-  .feature {
-    background: rgba(20,34,64,0.8);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 16px 12px;
-    text-align: center;
-  }
+    .feature {
+        background: rgba(20, 34, 64, 0.8);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 10px;
+        text-align: center;
+    }
 
-  .feature .f-icon { font-size: 22px; margin-bottom: 8px; }
-  .feature .f-label { font-size: 12px; font-weight: 600; color: var(--white); }
-  .feature .f-sub { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+    .feature .fi {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
 
-  /* Bookmarklet drag target */
-  .drag-target-section {
-    background: rgba(20,34,64,0.85);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px;
-    margin-bottom: 24px;
-    text-align: center;
-  }
+    .feature .fl {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--white);
+    }
 
-  .drag-target-section h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; color: var(--white); margin-bottom: 8px;
-  }
+    .feature .fs {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+        line-height: 1.4;
+    }
 
-  .drag-target-section p {
-    font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6;
-  }
+    .card {
+        background: rgba(20, 34, 64, 0.85);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 20px;
+    }
 
-  /* THE bookmarklet link — draggable */
-  #pdp-bookmarklet-link {
-    display: inline-flex;
-    align-items: center; gap: 10px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, var(--gold), #E8860A);
-    color: var(--navy);
-    font-size: 16px; font-weight: 700;
-    border-radius: 12px;
-    text-decoration: none;
-    cursor: grab;
-    box-shadow: 0 4px 24px rgba(240,180,41,0.35);
-    transition: all 0.2s;
-    user-select: none;
-    border: 3px dashed transparent;
-  }
+    .card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 19px;
+        color: var(--white);
+        margin-bottom: 6px;
+    }
 
-  #pdp-bookmarklet-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(240,180,41,0.5);
-  }
+    .card p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
 
-  #pdp-bookmarklet-link:active { cursor: grabbing; }
+    #pdp-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, var(--gold), #E8860A);
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 12px;
+        text-decoration: none;
+        cursor: grab;
+        box-shadow: 0 4px 24px rgba(240, 180, 41, 0.35);
+        transition: all 0.2s;
+        user-select: none;
+    }
 
-  .drag-hint {
-    font-size: 12px; color: var(--muted);
-    margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
+    #pdp-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(240, 180, 41, 0.5);
+    }
 
-  .drag-arrow { font-size: 18px; animation: bounce 1.5s ease-in-out infinite; }
+    .drag-hint {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
 
-  @keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
+    .bounce {
+        animation: bounce 1.5s ease-in-out infinite;
+        display: inline-block;
+    }
 
-  /* Steps */
-  .steps-card {
-    background: rgba(20,34,64,0.85);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 24px 28px;
-    margin-bottom: 24px;
-  }
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
 
-  .steps-card h3 {
-    font-size: 14px; color: var(--muted); text-transform: uppercase;
-    letter-spacing: 1.5px; margin-bottom: 20px;
-  }
+        50% {
+            transform: translateY(-4px);
+        }
+    }
 
-  .step {
-    display: flex; align-items: flex-start; gap: 16px;
-    margin-bottom: 18px;
-  }
+    .ptabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 18px;
+    }
 
-  .step:last-child { margin-bottom: 0; }
+    .ptab {
+        padding: 7px 14px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--muted);
+        transition: all 0.2s;
+    }
 
-  .step-num {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold), #E8860A);
-    color: var(--navy); font-size: 13px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
-  }
+    .ptab.on {
+        background: rgba(240, 180, 41, 0.1);
+        color: var(--gold);
+        border-color: rgba(240, 180, 41, 0.3);
+    }
 
-  .step-body { flex: 1; }
-  .step-body strong { color: var(--white); font-size: 14px; display: block; margin-bottom: 3px; }
-  .step-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
-  .step-body code {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 4px; padding: 1px 6px; font-size: 12px; color: var(--teal);
-    font-family: monospace;
-  }
+    .psteps {
+        display: none;
+    }
 
-  /* Platform tabs */
-  .platform-tabs {
-    display: flex; gap: 4px; margin-bottom: 20px;
-  }
+    .psteps.on {
+        display: block;
+    }
 
-  .platform-tab {
-    padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
-    cursor: pointer; border: 1px solid var(--border);
-    background: transparent; color: var(--muted);
-    transition: all 0.2s;
-  }
+    .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 16px;
+    }
 
-  .platform-tab.active {
-    background: rgba(240,180,41,0.1); color: var(--gold); border-color: rgba(240,180,41,0.3);
-  }
+    .sn {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), #E8860A);
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
 
-  .platform-steps { display: none; }
-  .platform-steps.active { display: block; }
+    .sb strong {
+        color: var(--white);
+        font-size: 13px;
+        display: block;
+        margin-bottom: 2px;
+    }
 
-  /* Warning */
-  .warning {
-    background: rgba(255,107,138,0.07);
-    border: 1px solid rgba(255,107,138,0.2);
-    border-radius: 10px; padding: 14px 18px;
-    font-size: 12px; color: var(--muted); line-height: 1.6;
-    margin-top: 8px;
-  }
+    .sb p {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+    }
 
-  .warning strong { color: var(--rose); }
+    .sb code {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 11px;
+        color: var(--teal);
+        font-family: monospace;
+    }
 
-  /* Privacy note */
-  .privacy {
-    background: rgba(0,201,177,0.06);
-    border: 1px solid rgba(0,201,177,0.18);
-    border-radius: 10px; padding: 14px 18px;
-    font-size: 12px; color: var(--muted); line-height: 1.6;
-    margin-top: 20px;
-  }
+    .codebox {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 12px;
+        font-family: monospace;
+        font-size: 10px;
+        color: var(--teal);
+        word-break: break-all;
+        line-height: 1.5;
+        margin: 10px 0;
+        max-height: 70px;
+        overflow-y: auto;
+    }
 
-  .privacy strong { color: var(--teal); }
+    .copybtn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid rgba(240, 180, 41, 0.3);
+        background: rgba(240, 180, 41, 0.1);
+        color: var(--gold);
+        transition: all 0.2s;
+    }
 
-  /* Code fallback */
-  .code-fallback {
-    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px; padding: 14px; font-family: monospace;
-    font-size: 11px; color: var(--teal); word-break: break-all;
-    line-height: 1.6; margin: 12px 0; max-height: 80px; overflow-y: auto;
-    text-align: left;
-  }
+    .copybtn:hover {
+        background: rgba(240, 180, 41, 0.2);
+    }
 
-  .copy-btn {
-    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
-    cursor: pointer; border: none;
-    background: rgba(240,180,41,0.15); color: var(--gold);
-    border: 1px solid rgba(240,180,41,0.3); transition: all 0.2s;
-  }
+    .warn {
+        background: rgba(255, 107, 138, 0.07);
+        border: 1px solid rgba(255, 107, 138, 0.2);
+        border-radius: 10px;
+        padding: 14px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 8px;
+    }
 
-  .copy-btn:hover { background: rgba(240,180,41,0.25); }
+    .warn strong {
+        color: var(--rose);
+    }
 
-  @media (max-width: 600px) {
-    .features { grid-template-columns: repeat(2, 1fr); }
-    .hero h2 { font-size: 28px; }
-    .drag-target-section { padding: 20px; }
-  }
-</style>
+    .priv {
+        background: rgba(0, 201, 177, 0.06);
+        border: 1px solid rgba(0, 201, 177, 0.18);
+        border-radius: 10px;
+        padding: 14px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 14px;
+    }
+
+    .priv strong {
+        color: var(--teal);
+    }
+
+    @media (max-width: 560px) {
+        .features {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero h2 {
+            font-size: 26px;
+        }
+    }
+    </style>
 </head>
 <body>
-<div class="wrap">
+    <div class="wrap">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            <div>
+                <h1>Pixie Dust Pro</h1>
+                <p>Disney Trip Intelligence</p>
+            </div>
+        </div>
 
-  <div class="logo">
-    <div class="logo-icon">✦</div>
-    <div>
-      <h1>Pixie Dust Pro</h1>
-      <p>Disney Trip Intelligence</p>
+        <div class="hero">
+            <h2>
+                Plan smarter.
+                <br>
+                <span>Visit happier.</span>
+            </h2>
+            <p>A free bookmarklet that adds live wait times, Lightning Lane return times, and first-timer strategy guides directly on top of Disney's website.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="fi">⏱</div>
+                <div class="fl">Wait Times</div>
+                <div class="fs">All 4 parks, live</div>
+            </div>
+            <div class="feature">
+                <div class="fi">⚡</div>
+                <div class="fl">Lightning Lane</div>
+                <div class="fs">Next return times</div>
+            </div>
+            <div class="feature">
+                <div class="fi">🗺</div>
+                <div class="fl">Strategy</div>
+                <div class="fs">Rope drop & LL tips</div>
+            </div>
+            <div class="feature">
+                <div class="fi">🍽</div>
+                <div class="fl">Dining</div>
+                <div class="fs">Must-book picks</div>
+            </div>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <h3>Step 1 — Save the Bookmarklet</h3>
+            <p>Drag this button to your bookmarks bar. On mobile, use the steps below to install it manually.</p>
+            <a id="pdp-link" href="javascript:(function()%7B%20'use%20strict'%3B%20if(document.getElementById('pdp-overlay'))%7Bdocument.getElementById('pdp-overlay').style.display%3D'flex'%3Breturn%3B%7D%20const%20THEMEPARKS%3D%7BMK%3A'75ea578a-adc8-4116-a54d-dccb60765ef0'%2CEP%3A'47f90d2c-e191-4239-a466-5892ef59a88b'%2CHS%3A'288747d1-8b4f-4a64-867e-ea7c9b27bad8'%2CAK%3A'1c84a229-8862-4648-9c71-378dabb176a7'%7D%3B%20const%20PARK_NAMES%3D%7BMK%3A'Magic%20Kingdom'%2CEP%3A'EPCOT'%2CHS%3A'Hollywood%20Studios'%2CAK%3A'Animal%20Kingdom'%7D%3B%20const%20HIGH_PRIORITY%3D%5B'tron'%2C'tiana'%2C'guardians'%2C'rise%20of%20the%20resistance'%2C'slinky'%2C'flight%20of%20passage'%2C'space%20mountain'%2C'seven%20dwarfs'%2C'remy'%5D%3B%20function%20getPriority(n)%7Breturn%20HIGH_PRIORITY.some(h%3D%3En.toLowerCase().includes(h))%3F10%3A1%3B%7D%20function%20formatTime(iso)%7Bif(!iso)return%20null%3Bconst%20d%3Dnew%20Date(iso)%3Breturn%20d.toLocaleTimeString('en-US'%2C%7Bhour%3A'numeric'%2Cminute%3A'2-digit'%7D)%3B%7D%20function%20getAuthData()%7B%20for(let%20i%3D0%3Bi%3ClocalStorage.length%3Bi%2B%2B)%7B%20const%20key%3DlocalStorage.key(i)%3B%20if(!key.includes('disney')%26%26!key.includes('disneyid'))continue%3B%20try%7Bconst%20p%3DJSON.parse(localStorage.getItem(key))%3Bif(p%26%26p.access_token)return%7Btoken%3Ap.access_token%2Cswid%3Ap.swid%7C%7Cnull%7D%3B%7Dcatch(e)%7B%7D%20%7D%20return%20null%3B%20%7D%20async%20function%20fetchWaits(parkId)%7B%20const%20r%3Dawait%20fetch('https%3A%20if(!r.ok)throw%20new%20Error(r.status)%3B%20return%20r.json()%3B%20%7D%20function%20normalizeWaits(raw)%7B%20if(!raw%7C%7C!raw.liveData)return%5B%5D%3B%20return%20raw.liveData%20.filter(e%3D%3Ee.entityType%3D%3D%3D'ATTRACTION'%26%26e.queue%26%26e.queue.STANDBY%26%26e.queue.STANDBY.waitTime!%3Dnull)%20.map(e%3D%3E(%7B%20name%3Ae.name%2C%20wait%3Ae.queue.STANDBY.waitTime%2C%20status%3Ae.status%2C%20llTime%3Ae.queue%26%26e.queue.RETURN_TIME%26%26e.queue.RETURN_TIME.returnStart%3FformatTime(e.queue.RETURN_TIME.returnStart)%3Anull%2C%20llAvail%3Ae.queue%26%26e.queue.RETURN_TIME%26%26e.queue.RETURN_TIME.state%3D%3D%3D'AVAILABLE'%2C%20priority%3AgetPriority(e.name)%20%7D))%20.sort((a%2Cb)%3D%3Eb.wait-a.wait)%3B%20%7D%20const%20STRATEGY%3D%5B%20%7Bicon%3A'%F0%9F%8C%85'%2Ctitle%3A'Rope%20Drop%20Every%20Day'%2Cbody%3A'Arrive%20at%20the%20park%20gate%2030%20min%20before%20official%20open.%20The%20first%2045%20minutes%20has%20the%20shortest%20waits%20of%20the%20entire%20day.%20On-site%20guests%20get%20an%20extra%2030%20min%20Early%20Entry%20on%20top%20of%20that.'%7D%2C%20%7Bicon%3A'%E2%9A%A1'%2Ctitle%3A'Lightning%20Lane%20Booking%20Window'%2Cbody%3A'On-site%20hotel%20guests%20book%20LLMP%20at%207am%2C%203%20days%20before%20your%20visit.%20Off-site%20guests%20book%20same-day%20at%20park%20open.%20Book%20your%20%231%20priority%20first%20%E2%80%94%20Tron%2C%20TIANA%5C's%2C%20Guardians%2C%20Rise%20of%20the%20Resistance%20sell%20out%20within%20the%20first%20hour.'%7D%2C%20%7Bicon%3A'%F0%9F%8F%A8'%2Ctitle%3A'Hotel%20Early%20Entry%20%3D%20Free%20Rides'%2Cbody%3A'Every%20Disney%20on-site%20hotel%20(including%20Value%20resorts%20like%20Pop%20Century)%20gets%2030%20min%20Early%20Theme%20Park%20Entry%20daily.%20Use%20it%20at%20MK%20for%20Tron%20%2B%20TIANA%5C's%2C%20EPCOT%20for%20Guardians%2C%20HS%20for%20Slinky%20Dog%2C%20AK%20for%20Flight%20of%20Passage.'%7D%2C%20%7Bicon%3A'%F0%9F%94%81'%2Ctitle%3A'When%20to%20Park%20Hop'%2Cbody%3A'Hopping%20allowed%20after%202pm.%20Spend%20your%20morning%20at%20your%20primary%20park%20with%20LL%20bookings%2C%20then%20hop%20late%20afternoon.%20Best%20hops%3A%20EPCOT%E2%86%92Hollywood%20Studios%20for%20dinner%2C%20Magic%20Kingdom%E2%86%92EPCOT%20for%20World%20Showcase.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%99'%2Ctitle%3A'Extended%20Evening%20Hours'%2Cbody%3A'Deluxe%20resort%20guests%20get%202%E2%80%933%20extra%20hours%20at%20MK%20or%20EPCOT%20after%20close.%20Best%20perk%20for%20riding%20Tron%20with%20virtually%20no%20wait.%20Worth%20considering%20if%20you%5C're%20a%20repeat%20visitor%20optimizing%20for%20rides.'%7D%2C%20%7Bicon%3A'%F0%9F%8D%BD'%2Ctitle%3A'Dining%20Reservations'%2Cbody%3A'Open%20exactly%2060%20days%20before%20arrival%20at%206am%20ET.%20Set%20an%20alarm.%20Be%20Our%20Guest%2C%20Space%20220%2C%20%5C'Ohana%2C%20and%20Topolino%5C's%20fill%20within%20minutes.%20Check%20the%20app%20at%206am%20day-of%20for%20cancellations.'%7D%2C%20%5D%3B%20const%20DINING%3D%5B%20%7Bicon%3A'%F0%9F%8F%B0'%2Cname%3A'Be%20Our%20Guest'%2Cloc%3A'Magic%20Kingdom'%2Ctype%3A'Table%20Service'%2Ctip%3A'Inside%20Beast%5C's%20enchanted%20castle.%20Hardest%20reservation%20on%20property%20%E2%80%94%20book%20the%20moment%20your%2060-day%20window%20opens.'%7D%2C%20%7Bicon%3A'%F0%9F%9A%80'%2Cname%3A'Space%20220'%2Cloc%3A'EPCOT'%2Ctype%3A'Signature'%2Ctip%3A'Elevator%20to%20a%20space%20station%20220%20miles%20above%20Earth.%20Most%20unique%20dining%20experience%20at%20WDW.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%BA'%2Cname%3A'%5C'Ohana'%2Cloc%3A'Polynesian%20Resort'%2Ctype%3A'Table%20Service'%2Ctip%3A'All-you-care-to-enjoy%20feast%20with%20MK%20fireworks%20views.%20Character%20breakfast%20also%20available.'%7D%2C%20%7Bicon%3A'%F0%9F%8E%A8'%2Cname%3A'Topolino%5C's%20Terrace'%2Cloc%3A'Riviera%20Resort'%2Ctype%3A'Signature'%2Ctip%3A'Rooftop%20character%20breakfast%20with%20Mickey%2C%20Minnie%2C%20Donald%20%26%20Daisy.%20Best%20character%20meal%20on%20property.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%BF'%2Cname%3A'Satuli%20Canteen'%2Cloc%3A'Animal%20Kingdom'%2Ctype%3A'Quick%20Service'%2Ctip%3A'Best%20quick-service%20in%20any%20Disney%20park.%20Pandora-themed%2C%20no%20reservation%20needed.'%7D%2C%20%7Bicon%3A'%F0%9F%8D%BA'%2Cname%3A'Oga%5C's%20Cantina'%2Cloc%3A'Hollywood%20Studios'%2Ctype%3A'Bar%2FLounge'%2Ctip%3A'Only%20bar%20inside%20WDW.%20Star%20Wars%20cocktails%20and%20mocktails.%20Book%20a%20time%20slot%20%E2%80%94%20walk-up%20rarely%20works.'%7D%2C%20%5D%3B%20const%20CSS%3D%60%20*%7Bbox-sizing%3Aborder-box%3Bmargin%3A0%3Bpadding%3A0%3B%7D%20%23pdp%7Bposition%3Afixed%3Binset%3A0%3Bz-index%3A2147483647%3Bbackground%3Argba(8%2C16%2C32%2C0.97)%3Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bfont-family%3Asystem-ui%2C-apple-system%2Csans-serif%3Bcolor%3A%23F8F5EE%3Boverflow%3Ahidden%3B%7D%20%23pdp-hd%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Aspace-between%3Bpadding%3A12px%2020px%3Bborder-bottom%3A1px%20solid%20rgba(240%2C180%2C41%2C0.2)%3Bbackground%3Argba(10%2C22%2C40%2C0.98)%3Bflex-shrink%3A0%3B%7D%20%23pdp-logo%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bgap%3A10px%3B%7D%20%23pdp-li%7Bwidth%3A32px%3Bheight%3A32px%3Bborder-radius%3A50%25%3Bbackground%3Alinear-gradient(135deg%2C%23F0B429%2C%23E8860A)%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3Bfont-size%3A16px%3Bbox-shadow%3A0%200%2016px%20rgba(240%2C180%2C41%2C0.4)%3B%7D%20%23pdp-logo%20h1%7Bfont-size%3A17px%3Bfont-weight%3A800%3Bcolor%3A%23F0B429%3B%7D%20%23pdp-logo%20p%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Bletter-spacing%3A1.5px%3Btext-transform%3Auppercase%3B%7D%20%23pdp-x%7Bwidth%3A30px%3Bheight%3A30px%3Bborder-radius%3A6px%3Bbackground%3Argba(255%2C255%2C255%2C0.06)%3Bborder%3A1px%20solid%20rgba(255%2C255%2C255%2C0.1)%3Bcolor%3A%238A99B3%3Bfont-size%3A16px%3Bcursor%3Apointer%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3B%7D%20%23pdp-x%3Ahover%7Bbackground%3Argba(255%2C107%2C138%2C0.15)%3Bcolor%3A%23FF6B8A%3B%7D%20%23pdp-tabs%7Bdisplay%3Aflex%3Bgap%3A2px%3Bpadding%3A0%2020px%3Bborder-bottom%3A1px%20solid%20rgba(240%2C180%2C41%2C0.15)%3Bbackground%3Argba(10%2C22%2C40%2C0.95)%3Bflex-shrink%3A0%3Boverflow-x%3Aauto%3B%7D%20%23pdp-tabs%3A%3A-webkit-scrollbar%7Bdisplay%3Anone%3B%7D%20.pt%7Bpadding%3A9px%2014px%2011px%3Bfont-size%3A12px%3Bfont-weight%3A500%3Bcolor%3A%238A99B3%3Bcursor%3Apointer%3Bborder-bottom%3A2px%20solid%20transparent%3Bwhite-space%3Anowrap%3Btransition%3Aall%200.2s%3B%7D%20.pt%3Ahover%7Bcolor%3A%23F8F5EE%3B%7D%20.pt.on%7Bcolor%3A%23F0B429%3Bborder-bottom-color%3A%23F0B429%3B%7D%20%23pdp-body%7Bflex%3A1%3Boverflow-y%3Aauto%3Bpadding%3A18px%2020px%3B%7D%20%23pdp-body%3A%3A-webkit-scrollbar%7Bwidth%3A4px%3B%7D%20%23pdp-body%3A%3A-webkit-scrollbar-thumb%7Bbackground%3Argba(240%2C180%2C41%2C0.2)%3Bborder-radius%3A2px%3B%7D%20.pp%7Bdisplay%3Anone%3B%7D%20.pp.on%7Bdisplay%3Ablock%3B%7D%20.ptitle%7Bfont-size%3A20px%3Bfont-weight%3A800%3Bcolor%3A%23F8F5EE%3Bmargin-bottom%3A3px%3B%7D%20.ptitle%20span%7Bcolor%3A%23F0B429%3B%7D%20.psub%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bmargin-bottom%3A14px%3B%7D%20.psel%7Bdisplay%3Aflex%3Bgap%3A6px%3Bflex-wrap%3Awrap%3Bmargin-bottom%3A14px%3B%7D%20.pb%7Bpadding%3A7px%2014px%3Bborder-radius%3A20px%3Bfont-size%3A12px%3Bfont-weight%3A600%3Bcursor%3Apointer%3Bborder%3A1px%20solid%20rgba(255%2C255%2C255%2C0.1)%3Bbackground%3Argba(255%2C255%2C255%2C0.04)%3Bcolor%3A%238A99B3%3Btransition%3Aall%200.2s%3B%7D%20.pb.mk%7Bbackground%3Argba(0%2C201%2C177%2C0.12)%3Bcolor%3A%2300C9B1%3Bborder-color%3Argba(0%2C201%2C177%2C0.3)%3B%7D%20.pb.ep%7Bbackground%3Argba(167%2C139%2C250%2C0.12)%3Bcolor%3A%23A78BFA%3Bborder-color%3Argba(167%2C139%2C250%2C0.3)%3B%7D%20.pb.hs%7Bbackground%3Argba(255%2C107%2C138%2C0.12)%3Bcolor%3A%23FF6B8A%3Bborder-color%3Argba(255%2C107%2C138%2C0.3)%3B%7D%20.pb.ak%7Bbackground%3Argba(240%2C180%2C41%2C0.12)%3Bcolor%3A%23F0B429%3Bborder-color%3Argba(240%2C180%2C41%2C0.3)%3B%7D%20.stat%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bgap%3A8px%3Bpadding%3A9px%2014px%3Bborder-radius%3A8px%3Bfont-size%3A12px%3Bmargin-bottom%3A12px%3Bborder%3A1px%20solid%3B%7D%20.stat.ld%7Bbackground%3Argba(167%2C139%2C250%2C0.08)%3Bborder-color%3Argba(167%2C139%2C250%2C0.2)%3Bcolor%3A%23A78BFA%3B%7D%20.stat.ok%7Bbackground%3Argba(0%2C201%2C177%2C0.08)%3Bborder-color%3Argba(0%2C201%2C177%2C0.2)%3Bcolor%3A%2300C9B1%3B%7D%20.stat.er%7Bbackground%3Argba(255%2C107%2C138%2C0.08)%3Bborder-color%3Argba(255%2C107%2C138%2C0.2)%3Bcolor%3A%23FF6B8A%3B%7D%20.stat.wn%7Bbackground%3Argba(240%2C180%2C41%2C0.08)%3Bborder-color%3Argba(240%2C180%2C41%2C0.2)%3Bcolor%3A%23F0B429%3B%7D%20.sd%7Bwidth%3A7px%3Bheight%3A7px%3Bborder-radius%3A50%25%3Bbackground%3AcurrentColor%3Bflex-shrink%3A0%3B%7D%20.sp%7Bdisplay%3Ainline-block%3Bwidth%3A12px%3Bheight%3A12px%3Bborder%3A2px%20solid%20currentColor%3Bborder-top-color%3Atransparent%3Bborder-radius%3A50%25%3Banimation%3Aspin%200.8s%20linear%20infinite%3Bmargin-right%3A5px%3Bvertical-align%3Amiddle%3B%7D%20%40keyframes%20spin%7Bto%7Btransform%3Arotate(360deg)%3B%7D%7D%20.tbl%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A6px%3B%7D%20.thd%7Bdisplay%3Agrid%3Bgrid-template-columns%3A1fr%2080px%20100px%2080px%3Bgap%3A8px%3Bpadding%3A4px%2012px%3Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Btext-transform%3Auppercase%3Bletter-spacing%3A1px%3B%7D%20.tr%7Bdisplay%3Agrid%3Bgrid-template-columns%3A1fr%2080px%20100px%2080px%3Bgap%3A8px%3Bpadding%3A11px%2012px%3Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Balign-items%3Acenter%3B%7D%20.tr.hi%7Bborder-color%3Argba(240%2C180%2C41%2C0.3)%3B%7D%20.tr%3Ahover%7Bborder-color%3Argba(240%2C180%2C41%2C0.25)%3B%7D%20.an%7Bfont-size%3A13px%3Bfont-weight%3A500%3Bcolor%3A%23F8F5EE%3B%7D%20.as%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Bmargin-top%3A1px%3B%7D%20.wt%7Bfont-size%3A13px%3Bfont-weight%3A600%3Btext-align%3Acenter%3B%7D%20.wt.lo%7Bcolor%3A%2300C9B1%3B%7D.wt.me%7Bcolor%3A%23F0B429%3B%7D.wt.hi2%7Bcolor%3A%23FF6B8A%3B%7D.wt.na%7Bcolor%3A%238A99B3%3Bfont-size%3A11px%3Bfont-weight%3A400%3B%7D%20.lt%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3Btext-align%3Acenter%3B%7D%20.lt.na%7Bcolor%3A%238A99B3%3Bfont-size%3A11px%3Bfont-weight%3A400%3B%7D%20.pb2%7Bfont-size%3A10px%3Bfont-weight%3A700%3Bcolor%3A%23F0B429%3Bbackground%3Argba(240%2C180%2C41%2C0.1)%3Bpadding%3A2px%207px%3Bborder-radius%3A20px%3B%7D%20.tip%7Bbackground%3Argba(0%2C201%2C177%2C0.07)%3Bborder%3A1px%20solid%20rgba(0%2C201%2C177%2C0.2)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.6%3Bmargin-top%3A14px%3B%7D%20.tip%20strong%7Bcolor%3A%2300C9B1%3B%7D%20.sc%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A10px%3B%7D%20.si%7Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3B%7D%20.sit%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3Bmargin-bottom%3A4px%3B%7D%20.sib%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.6%3B%7D%20.dc%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A8px%3B%7D%20.di%7Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3Bdisplay%3Aflex%3Bgap%3A12px%3Balign-items%3Aflex-start%3B%7D%20.dico%7Bfont-size%3A22px%3Bflex-shrink%3A0%3B%7D%20.dn%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3B%7D%20.dl%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Btext-transform%3Auppercase%3Bletter-spacing%3A1px%3Bmargin%3A2px%200%205px%3B%7D%20.dt%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.5%3B%7D%20%40media(max-width%3A500px)%7B.thd%2C.tr%7Bgrid-template-columns%3A1fr%2065px%3B%7D.thd%3E%3Anth-child(3)%2C.tr%3E%3Anth-child(3)%2C.thd%3E%3Anth-child(4)%2C.tr%3E%3Anth-child(4)%7Bdisplay%3Anone%3B%7D%7D%20%60%3B%20const%20state%3D%7Bpark%3A'MK'%2Cwpk%3A'MK'%2Cwdata%3A%7B%7D%7D%3B%20function%20injectCSS()%7Bconst%20s%3Ddocument.createElement('style')%3Bs.id%3D'pdp-css'%3Bs.textContent%3DCSS%3Bdocument.head.appendChild(s)%3B%7D%20function%20buildUI()%7B%20const%20o%3Ddocument.createElement('div')%3B%20o.id%3D'pdp'%3B%20o.innerHTML%3D%60%20%3Cdiv%20id%3D%22pdp-hd%22%3E%20%3Cdiv%20id%3D%22pdp-logo%22%3E%3Cdiv%20id%3D%22pdp-li%22%3E%E2%9C%A6%3C%2Fdiv%3E%3Cdiv%3E%3Ch1%3EPixie%20Dust%20Pro%3C%2Fh1%3E%3Cp%3EDisney%20Trip%20Intelligence%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22pdp-x%22%3E%E2%9C%95%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cnav%20id%3D%22pdp-tabs%22%3E%20%3Cdiv%20class%3D%22pt%20on%22%20data-t%3D%22w%22%3E%E2%8F%B1%20Wait%20Times%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22ll%22%3E%E2%9A%A1%20Lightning%20Lane%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22s%22%3E%F0%9F%97%BA%20Strategy%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22d%22%3E%F0%9F%8D%BD%20Dining%3C%2Fdiv%3E%20%3C%2Fnav%3E%20%3Cdiv%20id%3D%22pdp-body%22%3E%20%3Cdiv%20class%3D%22pp%20on%22%20id%3D%22pp-w%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3ELive%20%3Cspan%3EWait%20Times%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EVia%20ThemeParks.wiki%20%C2%B7%20updates%20every%205%20min%20%C2%B7%20no%20login%20needed%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psel%22%20id%3D%22wps%22%3E%20%3Cbutton%20class%3D%22pb%20mk%22%20data-p%3D%22MK%22%3E%F0%9F%8F%B0%20Magic%20Kingdom%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22EP%22%3E%F0%9F%8C%90%20EPCOT%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22HS%22%3E%F0%9F%8E%AC%20Hollywood%20Studios%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22AK%22%3E%F0%9F%A6%81%20Animal%20Kingdom%3C%2Fbutton%3E%20%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22wstat%22%20class%3D%22stat%20ld%22%3E%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E%3Cspan%3ELoading%20wait%20times%E2%80%A6%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22wtbl%22%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22tip%22%3E%3Cstrong%3EBest%20standby%20times%3A%3C%2Fstrong%3E%20First%2045%20min%20after%20park%20open%2C%20and%20last%2030%E2%80%9360%20min%20before%20close.%20Midday%20is%20almost%20always%20the%20worst.%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-ll%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3ELightning%20Lane%20%3Cspan%3EReturns%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3ENext%20available%20return%20times%20from%20live%20data%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psel%22%20id%3D%22llps%22%3E%20%3Cbutton%20class%3D%22pb%20mk%22%20data-p%3D%22MK%22%3E%F0%9F%8F%B0%20Magic%20Kingdom%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22EP%22%3E%F0%9F%8C%90%20EPCOT%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22HS%22%3E%F0%9F%8E%AC%20Hollywood%20Studios%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22AK%22%3E%F0%9F%A6%81%20Animal%20Kingdom%3C%2Fbutton%3E%20%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22llstat%22%20class%3D%22stat%20ld%22%3E%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E%3Cspan%3ELoading%20LL%20data%E2%80%A6%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22lltbl%22%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22tip%22%3E%3Cstrong%3EStrategy%3A%3C%2Fstrong%3E%20Book%20your%20highest-priority%20LL%20the%20instant%20your%20booking%20window%20opens.%20On%20high%20crowd%20days%20Tron%2C%20TIANA's%20and%20Guardians%20sell%20out%20within%20the%20first%20hour.%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-s%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3EFirst-Timer%20%3Cspan%3EStrategy%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EYour%20daily%20game%20plan%20for%20an%20incredible%20trip%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22sc%22%20id%3D%22strat%22%3E%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-d%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3EMust-Try%20%3Cspan%3EDining%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EBook%2060%20days%20out%20at%206am%20ET%20%E2%80%94%20these%20fill%20up%20fast%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22dc%22%20id%3D%22dining%22%3E%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3C%2Fdiv%3E%60%3B%20document.body.appendChild(o)%3B%20%7D%20function%20setstat(id%2Cmsg%2Ctype)%7B%20const%20el%3Ddocument.getElementById(id)%3B%20if(!el)return%3B%20el.className%3D'stat%20'%2Btype%3B%20const%20spin%3Dtype%3D%3D%3D'ld'%3F'%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E'%3A'%3Cdiv%20class%3D%22sd%22%3E%3C%2Fdiv%3E'%3B%20el.innerHTML%3Dspin%2B'%3Cspan%3E'%2Bmsg%2B'%3C%2Fspan%3E'%3B%20%7D%20function%20renderTable(data%2CtblId%2CstatId%2Cmode)%7B%20const%20tbl%3Ddocument.getElementById(tblId)%3B%20if(!data%7C%7C!data.length)%7Btbl.innerHTML%3D'%3Cdiv%20style%3D%22padding%3A16px%3Btext-align%3Acenter%3Bcolor%3A%238A99B3%3Bfont-size%3A12px%3B%22%3ENo%20data%20available%20right%20now.%3C%2Fdiv%3E'%3Breturn%3B%7D%20const%20rows%3Ddata.slice(0%2C20).map(a%3D%3E%7B%20const%20wc%3Da.wait%3E%3D75%3F'hi2'%3Aa.wait%3E%3D45%3F'me'%3A'lo'%3B%20const%20isPri%3Da.priority%3E%3D10%3B%20const%20llT%3Dmode%3D%3D%3D'll'%3Fa.llTime%3Aa.llTime%3B%20const%20llAvail%3Dmode%3D%3D%3D'll'%3Fa.llAvail%3Aa.llAvail%3B%20const%20llShow%3DllT%7C%7CllAvail%3FllT%7C%7C'Available'%3A'None'%3B%20const%20llCls%3DllT%7C%7CllAvail%3F''%3A'na'%3B%20return%60%3Cdiv%20class%3D%22tr%24%7BisPri%3F'%20hi'%3A''%7D%22%3E%20%3Cdiv%3E%3Cdiv%20class%3D%22an%22%3E%24%7Ba.name%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22as%22%3E%24%7Ba.status%7C%7C''%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22wt%20%24%7Ba.wait%3Fwc%3A'na'%7D%22%3E%24%7Ba.wait%3Fa.wait%2B'%20min'%3A'%E2%80%94'%7D%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22lt%20%24%7BllCls%7D%22%3E%24%7BllShow%7D%3C%2Fdiv%3E%20%3Cdiv%3E%24%7BisPri%3F'%3Cspan%20class%3D%22pb2%22%3E%E2%AD%90%20Book%201st%3C%2Fspan%3E'%3A'%3Cspan%20style%3D%22color%3A%238A99B3%3Bfont-size%3A11px%3B%22%3E%E2%80%94%3C%2Fspan%3E'%7D%3C%2Fdiv%3E%20%3C%2Fdiv%3E%60%3B%20%7D).join('')%3B%20tbl.innerHTML%3D%60%3Cdiv%20class%3D%22tbl%22%3E%20%3Cdiv%20class%3D%22thd%22%3E%3Cdiv%3EAttraction%3C%2Fdiv%3E%3Cdiv%20style%3D%22text-align%3Acenter%22%3EWait%3C%2Fdiv%3E%3Cdiv%20style%3D%22text-align%3Acenter%22%3E%24%7Bmode%3D%3D%3D'll'%3F'LL%20Return'%3A'LL%20Time'%7D%3C%2Fdiv%3E%3Cdiv%3EPriority%3C%2Fdiv%3E%3C%2Fdiv%3E%20%24%7Brows%7D%20%3C%2Fdiv%3E%60%3B%20%7D%20async%20function%20loadWaits(pk)%7B%20setstat('wstat'%2C'Loading%20'%2BPARK_NAMES%5Bpk%5D%2B'%E2%80%A6'%2C'ld')%3B%20document.getElementById('wtbl').innerHTML%3D''%3B%20try%7B%20const%20raw%3Dawait%20fetchWaits(THEMEPARKS%5Bpk%5D)%3B%20const%20data%3DnormalizeWaits(raw)%3B%20state.wdata%5Bpk%5D%3Ddata%3B%20renderTable(data%2C'wtbl'%2C'wstat'%2C'w')%3B%20setstat('wstat'%2CPARK_NAMES%5Bpk%5D%2B'%20%C2%B7%20Updated%20'%2Bnew%20Date().toLocaleTimeString()%2C'ok')%3B%20%7Dcatch(e)%7B%20setstat('wstat'%2C'Could%20not%20load%20%E2%80%94%20check%20connection'%2C'er')%3B%20%7D%20%7D%20async%20function%20loadLL(pk)%7B%20setstat('llstat'%2C'Loading%20LL%20data%20for%20'%2BPARK_NAMES%5Bpk%5D%2B'%E2%80%A6'%2C'ld')%3B%20document.getElementById('lltbl').innerHTML%3D''%3B%20try%7B%20const%20raw%3Dawait%20fetchWaits(THEMEPARKS%5Bpk%5D)%3B%20const%20all%3DnormalizeWaits(raw)%3B%20const%20llData%3Dall.filter(a%3D%3Ea.llAvail%7C%7Ca.llTime)%3B%20if(llData.length)%7B%20renderTable(llData%2C'lltbl'%2C'llstat'%2C'll')%3B%20setstat('llstat'%2C'LL%20data%20%C2%B7%20'%2BPARK_NAMES%5Bpk%5D%2B'%20%C2%B7%20'%2Bnew%20Date().toLocaleTimeString()%2C'ok')%3B%20%7Delse%7B%20document.getElementById('lltbl').innerHTML%3D'%3Cdiv%20style%3D%22padding%3A16px%3Btext-align%3Acenter%3Bcolor%3A%238A99B3%3Bfont-size%3A12px%3B%22%3ENo%20Lightning%20Lane%20return%20times%20available%20right%20now.%3Cbr%3E%3Cspan%20style%3D%22font-size%3A11px%3Bmargin-top%3A4px%3Bdisplay%3Ablock%3B%22%3ELL%20may%20not%20be%20active%20yet%20today%2C%20or%20all%20slots%20are%20booked.%3C%2Fspan%3E%3C%2Fdiv%3E'%3B%20setstat('llstat'%2C'No%20LL%20availability%20found%20for%20'%2BPARK_NAMES%5Bpk%5D%2C'wn')%3B%20%7D%20%7Dcatch(e)%7B%20setstat('llstat'%2C'Could%20not%20load%20LL%20data'%2C'er')%3B%20%7D%20%7D%20function%20renderStrategy()%7B%20document.getElementById('strat').innerHTML%3DSTRATEGY.map(s%3D%3E%60%20%3Cdiv%20class%3D%22si%22%3E%3Cdiv%20class%3D%22sit%22%3E%24%7Bs.icon%7D%20%24%7Bs.title%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22sib%22%3E%24%7Bs.body%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%20%60).join('')%3B%20%7D%20function%20renderDining()%7B%20document.getElementById('dining').innerHTML%3DDINING.map(r%3D%3E%60%20%3Cdiv%20class%3D%22di%22%3E%3Cdiv%20class%3D%22dico%22%3E%24%7Br.icon%7D%3C%2Fdiv%3E%3Cdiv%3E%3Cdiv%20class%3D%22dn%22%3E%24%7Br.name%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22dl%22%3E%24%7Br.loc%7D%20%C2%B7%20%24%7Br.type%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22dt%22%3E%24%7Br.tip%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%20%60).join('')%3B%20%7D%20function%20wire()%7B%20document.getElementById('pdp-x').onclick%3D()%3D%3Edocument.getElementById('pdp').style.display%3D'none'%3B%20document.querySelectorAll('.pt').forEach(t%3D%3E%7B%20t.onclick%3D()%3D%3E%7B%20document.querySelectorAll('.pt').forEach(x%3D%3Ex.classList.remove('on'))%3B%20document.querySelectorAll('.pp').forEach(x%3D%3Ex.classList.remove('on'))%3B%20t.classList.add('on')%3B%20document.getElementById('pp-'%2Bt.dataset.t).classList.add('on')%3B%20%7D%3B%20%7D)%3B%20function%20setParkBtn(selId%2CactiveClass)%7B%20document.querySelectorAll('%23'%2BselId%2B'%20.pb').forEach(b%3D%3E%7B%20b.onclick%3D()%3D%3E%7B%20document.querySelectorAll('%23'%2BselId%2B'%20.pb').forEach(x%3D%3E%7Bx.className%3D'pb'%3B%7D)%3B%20b.className%3D'pb%20'%2BactiveClass%5Bb.dataset.p%5D%3B%20if(selId%3D%3D%3D'wps')%7Bstate.wpk%3Db.dataset.p%3BloadWaits(b.dataset.p)%3B%7D%20else%7Bstate.park%3Db.dataset.p%3BloadLL(b.dataset.p)%3B%7D%20%7D%3B%20%7D)%3B%20%7D%20const%20cls%3D%7BMK%3A'mk'%2CEP%3A'ep'%2CHS%3A'hs'%2CAK%3A'ak'%7D%3B%20setParkBtn('wps'%2Ccls)%3B%20setParkBtn('llps'%2Ccls)%3B%20%7D%20injectCSS()%3B%20buildUI()%3B%20wire()%3B%20renderStrategy()%3B%20renderDining()%3B%20loadWaits('MK')%3B%20loadLL('MK')%3B%20%7D)()%3B" title="Pixie Dust Pro — drag to bookmarks bar">✦ Pixie Dust Pro</a>
+            <div class="drag-hint">
+                <span class="bounce">↑</span>
+                 Drag up to your bookmarks bar
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Step 2 — Use It</h3>
+            <p>Go to any Walt Disney World page while logged in, then click the bookmarklet.</p>
+            <div class="ptabs">
+                <button class="ptab on" onclick="showP('desktop',this)">🖥 Desktop</button>
+                <button class="ptab" onclick="showP('iphone',this)">📱 iPhone</button>
+                <button class="ptab" onclick="showP('android',this)">🤖 Android</button>
+            </div>
+
+            <div class="psteps on" id="ps-desktop">
+                <div class="step">
+                    <div class="sn">1</div>
+                    <div class="sb">
+                        <strong>Show bookmarks bar</strong>
+                        <p>
+                            Chrome: 
+                            <code>⌘+Shift+B</code>
+                             · Safari: View → Show Favorites Bar
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">2</div>
+                    <div class="sb">
+                        <strong>Drag the gold button above to the bar</strong>
+                        <p>It saves automatically as a bookmark.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">3</div>
+                    <div class="sb">
+                        <strong>Go to disneyworld.disney.go.com and log in</strong>
+                        <p>Any Disney World page works.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">4</div>
+                    <div class="sb">
+                        <strong>Click ✦ Pixie Dust Pro in your bookmarks bar</strong>
+                        <p>The overlay appears instantly — no internet needed beyond the Disney page.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="psteps" id="ps-iphone">
+                <div class="step">
+                    <div class="sn">1</div>
+                    <div class="sb">
+                        <strong>Copy the bookmarklet code</strong>
+                        <p>Tap the button below.</p>
+                        <div class="codebox" id="codeEl"></div>
+                        <button class="copybtn" onclick="copyCode()">Copy Code</button>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">2</div>
+                    <div class="sb">
+                        <strong>Bookmark any page in Safari</strong>
+                        <p>
+                            Tap Share → Add Bookmark → save as 
+                            <strong style="color:#F8F5EE">Pixie Dust Pro</strong>
+                            .
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">3</div>
+                    <div class="sb">
+                        <strong>Edit the bookmark URL</strong>
+                        <p>Open Bookmarks → find Pixie Dust Pro → tap Edit → delete the URL → paste the copied code.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">4</div>
+                    <div class="sb">
+                        <strong>Use it at Disney</strong>
+                        <p>
+                            Go to 
+                            <code>disneyworld.disney.go.com</code>
+                            , tap the address bar, type 
+                            <strong style="color:#F8F5EE">Pixie</strong>
+                            , tap the bookmark.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="psteps" id="ps-android">
+                <div class="step">
+                    <div class="sn">1</div>
+                    <div class="sb">
+                        <strong>Copy the code</strong>
+                        <p>Use the Copy Code button in the iPhone tab above — same code.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">2</div>
+                    <div class="sb">
+                        <strong>Bookmark this page in Chrome</strong>
+                        <p>
+                            Tap ⋮ → Add to bookmarks → name it 
+                            <strong style="color:#F8F5EE">Pixie Dust Pro</strong>
+                            .
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">3</div>
+                    <div class="sb">
+                        <strong>Edit the bookmark URL</strong>
+                        <p>Open bookmarks → long-press → Edit → replace the URL with the copied code.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="sn">4</div>
+                    <div class="sb">
+                        <strong>Activate</strong>
+                        <p>
+                            On any Disney World page, type 
+                            <code>Pixie</code>
+                             in the address bar and tap the bookmark.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warn">
+            <strong>⚠️ Unofficial:</strong>
+             Not affiliated with or endorsed by The Walt Disney Company. Use at your own risk.
+        </div>
+        <div class="priv">
+            <strong>🔒 Privacy:</strong>
+             All data comes from ThemeParks.wiki's public API and Disney's own servers. Nothing is sent to any third party. Your Disney password is never seen or stored.
+        </div>
     </div>
-  </div>
 
-  <div class="hero">
-    <h2>Plan smarter.<br><span>Visit happier.</span></h2>
-    <p>A free bookmarklet that adds real-time Lightning Lane availability,
-       live wait times, and first-timer strategy guides directly on top of
-       Disney's own website — using your existing Disney account.</p>
-  </div>
+    <script>
+    const BM = 'javascript:(function()%7B%20'use%20strict'%3B%20if(document.getElementById('pdp-overlay'))%7Bdocument.getElementById('pdp-overlay').style.display%3D'flex'%3Breturn%3B%7D%20const%20THEMEPARKS%3D%7BMK%3A'75ea578a-adc8-4116-a54d-dccb60765ef0'%2CEP%3A'47f90d2c-e191-4239-a466-5892ef59a88b'%2CHS%3A'288747d1-8b4f-4a64-867e-ea7c9b27bad8'%2CAK%3A'1c84a229-8862-4648-9c71-378dabb176a7'%7D%3B%20const%20PARK_NAMES%3D%7BMK%3A'Magic%20Kingdom'%2CEP%3A'EPCOT'%2CHS%3A'Hollywood%20Studios'%2CAK%3A'Animal%20Kingdom'%7D%3B%20const%20HIGH_PRIORITY%3D%5B'tron'%2C'tiana'%2C'guardians'%2C'rise%20of%20the%20resistance'%2C'slinky'%2C'flight%20of%20passage'%2C'space%20mountain'%2C'seven%20dwarfs'%2C'remy'%5D%3B%20function%20getPriority(n)%7Breturn%20HIGH_PRIORITY.some(h%3D%3En.toLowerCase().includes(h))%3F10%3A1%3B%7D%20function%20formatTime(iso)%7Bif(!iso)return%20null%3Bconst%20d%3Dnew%20Date(iso)%3Breturn%20d.toLocaleTimeString('en-US'%2C%7Bhour%3A'numeric'%2Cminute%3A'2-digit'%7D)%3B%7D%20function%20getAuthData()%7B%20for(let%20i%3D0%3Bi%3ClocalStorage.length%3Bi%2B%2B)%7B%20const%20key%3DlocalStorage.key(i)%3B%20if(!key.includes('disney')%26%26!key.includes('disneyid'))continue%3B%20try%7Bconst%20p%3DJSON.parse(localStorage.getItem(key))%3Bif(p%26%26p.access_token)return%7Btoken%3Ap.access_token%2Cswid%3Ap.swid%7C%7Cnull%7D%3B%7Dcatch(e)%7B%7D%20%7D%20return%20null%3B%20%7D%20async%20function%20fetchWaits(parkId)%7B%20const%20r%3Dawait%20fetch('https%3A%20if(!r.ok)throw%20new%20Error(r.status)%3B%20return%20r.json()%3B%20%7D%20function%20normalizeWaits(raw)%7B%20if(!raw%7C%7C!raw.liveData)return%5B%5D%3B%20return%20raw.liveData%20.filter(e%3D%3Ee.entityType%3D%3D%3D'ATTRACTION'%26%26e.queue%26%26e.queue.STANDBY%26%26e.queue.STANDBY.waitTime!%3Dnull)%20.map(e%3D%3E(%7B%20name%3Ae.name%2C%20wait%3Ae.queue.STANDBY.waitTime%2C%20status%3Ae.status%2C%20llTime%3Ae.queue%26%26e.queue.RETURN_TIME%26%26e.queue.RETURN_TIME.returnStart%3FformatTime(e.queue.RETURN_TIME.returnStart)%3Anull%2C%20llAvail%3Ae.queue%26%26e.queue.RETURN_TIME%26%26e.queue.RETURN_TIME.state%3D%3D%3D'AVAILABLE'%2C%20priority%3AgetPriority(e.name)%20%7D))%20.sort((a%2Cb)%3D%3Eb.wait-a.wait)%3B%20%7D%20const%20STRATEGY%3D%5B%20%7Bicon%3A'%F0%9F%8C%85'%2Ctitle%3A'Rope%20Drop%20Every%20Day'%2Cbody%3A'Arrive%20at%20the%20park%20gate%2030%20min%20before%20official%20open.%20The%20first%2045%20minutes%20has%20the%20shortest%20waits%20of%20the%20entire%20day.%20On-site%20guests%20get%20an%20extra%2030%20min%20Early%20Entry%20on%20top%20of%20that.'%7D%2C%20%7Bicon%3A'%E2%9A%A1'%2Ctitle%3A'Lightning%20Lane%20Booking%20Window'%2Cbody%3A'On-site%20hotel%20guests%20book%20LLMP%20at%207am%2C%203%20days%20before%20your%20visit.%20Off-site%20guests%20book%20same-day%20at%20park%20open.%20Book%20your%20%231%20priority%20first%20%E2%80%94%20Tron%2C%20TIANA%5C's%2C%20Guardians%2C%20Rise%20of%20the%20Resistance%20sell%20out%20within%20the%20first%20hour.'%7D%2C%20%7Bicon%3A'%F0%9F%8F%A8'%2Ctitle%3A'Hotel%20Early%20Entry%20%3D%20Free%20Rides'%2Cbody%3A'Every%20Disney%20on-site%20hotel%20(including%20Value%20resorts%20like%20Pop%20Century)%20gets%2030%20min%20Early%20Theme%20Park%20Entry%20daily.%20Use%20it%20at%20MK%20for%20Tron%20%2B%20TIANA%5C's%2C%20EPCOT%20for%20Guardians%2C%20HS%20for%20Slinky%20Dog%2C%20AK%20for%20Flight%20of%20Passage.'%7D%2C%20%7Bicon%3A'%F0%9F%94%81'%2Ctitle%3A'When%20to%20Park%20Hop'%2Cbody%3A'Hopping%20allowed%20after%202pm.%20Spend%20your%20morning%20at%20your%20primary%20park%20with%20LL%20bookings%2C%20then%20hop%20late%20afternoon.%20Best%20hops%3A%20EPCOT%E2%86%92Hollywood%20Studios%20for%20dinner%2C%20Magic%20Kingdom%E2%86%92EPCOT%20for%20World%20Showcase.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%99'%2Ctitle%3A'Extended%20Evening%20Hours'%2Cbody%3A'Deluxe%20resort%20guests%20get%202%E2%80%933%20extra%20hours%20at%20MK%20or%20EPCOT%20after%20close.%20Best%20perk%20for%20riding%20Tron%20with%20virtually%20no%20wait.%20Worth%20considering%20if%20you%5C're%20a%20repeat%20visitor%20optimizing%20for%20rides.'%7D%2C%20%7Bicon%3A'%F0%9F%8D%BD'%2Ctitle%3A'Dining%20Reservations'%2Cbody%3A'Open%20exactly%2060%20days%20before%20arrival%20at%206am%20ET.%20Set%20an%20alarm.%20Be%20Our%20Guest%2C%20Space%20220%2C%20%5C'Ohana%2C%20and%20Topolino%5C's%20fill%20within%20minutes.%20Check%20the%20app%20at%206am%20day-of%20for%20cancellations.'%7D%2C%20%5D%3B%20const%20DINING%3D%5B%20%7Bicon%3A'%F0%9F%8F%B0'%2Cname%3A'Be%20Our%20Guest'%2Cloc%3A'Magic%20Kingdom'%2Ctype%3A'Table%20Service'%2Ctip%3A'Inside%20Beast%5C's%20enchanted%20castle.%20Hardest%20reservation%20on%20property%20%E2%80%94%20book%20the%20moment%20your%2060-day%20window%20opens.'%7D%2C%20%7Bicon%3A'%F0%9F%9A%80'%2Cname%3A'Space%20220'%2Cloc%3A'EPCOT'%2Ctype%3A'Signature'%2Ctip%3A'Elevator%20to%20a%20space%20station%20220%20miles%20above%20Earth.%20Most%20unique%20dining%20experience%20at%20WDW.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%BA'%2Cname%3A'%5C'Ohana'%2Cloc%3A'Polynesian%20Resort'%2Ctype%3A'Table%20Service'%2Ctip%3A'All-you-care-to-enjoy%20feast%20with%20MK%20fireworks%20views.%20Character%20breakfast%20also%20available.'%7D%2C%20%7Bicon%3A'%F0%9F%8E%A8'%2Cname%3A'Topolino%5C's%20Terrace'%2Cloc%3A'Riviera%20Resort'%2Ctype%3A'Signature'%2Ctip%3A'Rooftop%20character%20breakfast%20with%20Mickey%2C%20Minnie%2C%20Donald%20%26%20Daisy.%20Best%20character%20meal%20on%20property.'%7D%2C%20%7Bicon%3A'%F0%9F%8C%BF'%2Cname%3A'Satuli%20Canteen'%2Cloc%3A'Animal%20Kingdom'%2Ctype%3A'Quick%20Service'%2Ctip%3A'Best%20quick-service%20in%20any%20Disney%20park.%20Pandora-themed%2C%20no%20reservation%20needed.'%7D%2C%20%7Bicon%3A'%F0%9F%8D%BA'%2Cname%3A'Oga%5C's%20Cantina'%2Cloc%3A'Hollywood%20Studios'%2Ctype%3A'Bar%2FLounge'%2Ctip%3A'Only%20bar%20inside%20WDW.%20Star%20Wars%20cocktails%20and%20mocktails.%20Book%20a%20time%20slot%20%E2%80%94%20walk-up%20rarely%20works.'%7D%2C%20%5D%3B%20const%20CSS%3D%60%20*%7Bbox-sizing%3Aborder-box%3Bmargin%3A0%3Bpadding%3A0%3B%7D%20%23pdp%7Bposition%3Afixed%3Binset%3A0%3Bz-index%3A2147483647%3Bbackground%3Argba(8%2C16%2C32%2C0.97)%3Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bfont-family%3Asystem-ui%2C-apple-system%2Csans-serif%3Bcolor%3A%23F8F5EE%3Boverflow%3Ahidden%3B%7D%20%23pdp-hd%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Aspace-between%3Bpadding%3A12px%2020px%3Bborder-bottom%3A1px%20solid%20rgba(240%2C180%2C41%2C0.2)%3Bbackground%3Argba(10%2C22%2C40%2C0.98)%3Bflex-shrink%3A0%3B%7D%20%23pdp-logo%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bgap%3A10px%3B%7D%20%23pdp-li%7Bwidth%3A32px%3Bheight%3A32px%3Bborder-radius%3A50%25%3Bbackground%3Alinear-gradient(135deg%2C%23F0B429%2C%23E8860A)%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3Bfont-size%3A16px%3Bbox-shadow%3A0%200%2016px%20rgba(240%2C180%2C41%2C0.4)%3B%7D%20%23pdp-logo%20h1%7Bfont-size%3A17px%3Bfont-weight%3A800%3Bcolor%3A%23F0B429%3B%7D%20%23pdp-logo%20p%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Bletter-spacing%3A1.5px%3Btext-transform%3Auppercase%3B%7D%20%23pdp-x%7Bwidth%3A30px%3Bheight%3A30px%3Bborder-radius%3A6px%3Bbackground%3Argba(255%2C255%2C255%2C0.06)%3Bborder%3A1px%20solid%20rgba(255%2C255%2C255%2C0.1)%3Bcolor%3A%238A99B3%3Bfont-size%3A16px%3Bcursor%3Apointer%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3B%7D%20%23pdp-x%3Ahover%7Bbackground%3Argba(255%2C107%2C138%2C0.15)%3Bcolor%3A%23FF6B8A%3B%7D%20%23pdp-tabs%7Bdisplay%3Aflex%3Bgap%3A2px%3Bpadding%3A0%2020px%3Bborder-bottom%3A1px%20solid%20rgba(240%2C180%2C41%2C0.15)%3Bbackground%3Argba(10%2C22%2C40%2C0.95)%3Bflex-shrink%3A0%3Boverflow-x%3Aauto%3B%7D%20%23pdp-tabs%3A%3A-webkit-scrollbar%7Bdisplay%3Anone%3B%7D%20.pt%7Bpadding%3A9px%2014px%2011px%3Bfont-size%3A12px%3Bfont-weight%3A500%3Bcolor%3A%238A99B3%3Bcursor%3Apointer%3Bborder-bottom%3A2px%20solid%20transparent%3Bwhite-space%3Anowrap%3Btransition%3Aall%200.2s%3B%7D%20.pt%3Ahover%7Bcolor%3A%23F8F5EE%3B%7D%20.pt.on%7Bcolor%3A%23F0B429%3Bborder-bottom-color%3A%23F0B429%3B%7D%20%23pdp-body%7Bflex%3A1%3Boverflow-y%3Aauto%3Bpadding%3A18px%2020px%3B%7D%20%23pdp-body%3A%3A-webkit-scrollbar%7Bwidth%3A4px%3B%7D%20%23pdp-body%3A%3A-webkit-scrollbar-thumb%7Bbackground%3Argba(240%2C180%2C41%2C0.2)%3Bborder-radius%3A2px%3B%7D%20.pp%7Bdisplay%3Anone%3B%7D%20.pp.on%7Bdisplay%3Ablock%3B%7D%20.ptitle%7Bfont-size%3A20px%3Bfont-weight%3A800%3Bcolor%3A%23F8F5EE%3Bmargin-bottom%3A3px%3B%7D%20.ptitle%20span%7Bcolor%3A%23F0B429%3B%7D%20.psub%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bmargin-bottom%3A14px%3B%7D%20.psel%7Bdisplay%3Aflex%3Bgap%3A6px%3Bflex-wrap%3Awrap%3Bmargin-bottom%3A14px%3B%7D%20.pb%7Bpadding%3A7px%2014px%3Bborder-radius%3A20px%3Bfont-size%3A12px%3Bfont-weight%3A600%3Bcursor%3Apointer%3Bborder%3A1px%20solid%20rgba(255%2C255%2C255%2C0.1)%3Bbackground%3Argba(255%2C255%2C255%2C0.04)%3Bcolor%3A%238A99B3%3Btransition%3Aall%200.2s%3B%7D%20.pb.mk%7Bbackground%3Argba(0%2C201%2C177%2C0.12)%3Bcolor%3A%2300C9B1%3Bborder-color%3Argba(0%2C201%2C177%2C0.3)%3B%7D%20.pb.ep%7Bbackground%3Argba(167%2C139%2C250%2C0.12)%3Bcolor%3A%23A78BFA%3Bborder-color%3Argba(167%2C139%2C250%2C0.3)%3B%7D%20.pb.hs%7Bbackground%3Argba(255%2C107%2C138%2C0.12)%3Bcolor%3A%23FF6B8A%3Bborder-color%3Argba(255%2C107%2C138%2C0.3)%3B%7D%20.pb.ak%7Bbackground%3Argba(240%2C180%2C41%2C0.12)%3Bcolor%3A%23F0B429%3Bborder-color%3Argba(240%2C180%2C41%2C0.3)%3B%7D%20.stat%7Bdisplay%3Aflex%3Balign-items%3Acenter%3Bgap%3A8px%3Bpadding%3A9px%2014px%3Bborder-radius%3A8px%3Bfont-size%3A12px%3Bmargin-bottom%3A12px%3Bborder%3A1px%20solid%3B%7D%20.stat.ld%7Bbackground%3Argba(167%2C139%2C250%2C0.08)%3Bborder-color%3Argba(167%2C139%2C250%2C0.2)%3Bcolor%3A%23A78BFA%3B%7D%20.stat.ok%7Bbackground%3Argba(0%2C201%2C177%2C0.08)%3Bborder-color%3Argba(0%2C201%2C177%2C0.2)%3Bcolor%3A%2300C9B1%3B%7D%20.stat.er%7Bbackground%3Argba(255%2C107%2C138%2C0.08)%3Bborder-color%3Argba(255%2C107%2C138%2C0.2)%3Bcolor%3A%23FF6B8A%3B%7D%20.stat.wn%7Bbackground%3Argba(240%2C180%2C41%2C0.08)%3Bborder-color%3Argba(240%2C180%2C41%2C0.2)%3Bcolor%3A%23F0B429%3B%7D%20.sd%7Bwidth%3A7px%3Bheight%3A7px%3Bborder-radius%3A50%25%3Bbackground%3AcurrentColor%3Bflex-shrink%3A0%3B%7D%20.sp%7Bdisplay%3Ainline-block%3Bwidth%3A12px%3Bheight%3A12px%3Bborder%3A2px%20solid%20currentColor%3Bborder-top-color%3Atransparent%3Bborder-radius%3A50%25%3Banimation%3Aspin%200.8s%20linear%20infinite%3Bmargin-right%3A5px%3Bvertical-align%3Amiddle%3B%7D%20%40keyframes%20spin%7Bto%7Btransform%3Arotate(360deg)%3B%7D%7D%20.tbl%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A6px%3B%7D%20.thd%7Bdisplay%3Agrid%3Bgrid-template-columns%3A1fr%2080px%20100px%2080px%3Bgap%3A8px%3Bpadding%3A4px%2012px%3Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Btext-transform%3Auppercase%3Bletter-spacing%3A1px%3B%7D%20.tr%7Bdisplay%3Agrid%3Bgrid-template-columns%3A1fr%2080px%20100px%2080px%3Bgap%3A8px%3Bpadding%3A11px%2012px%3Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Balign-items%3Acenter%3B%7D%20.tr.hi%7Bborder-color%3Argba(240%2C180%2C41%2C0.3)%3B%7D%20.tr%3Ahover%7Bborder-color%3Argba(240%2C180%2C41%2C0.25)%3B%7D%20.an%7Bfont-size%3A13px%3Bfont-weight%3A500%3Bcolor%3A%23F8F5EE%3B%7D%20.as%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Bmargin-top%3A1px%3B%7D%20.wt%7Bfont-size%3A13px%3Bfont-weight%3A600%3Btext-align%3Acenter%3B%7D%20.wt.lo%7Bcolor%3A%2300C9B1%3B%7D.wt.me%7Bcolor%3A%23F0B429%3B%7D.wt.hi2%7Bcolor%3A%23FF6B8A%3B%7D.wt.na%7Bcolor%3A%238A99B3%3Bfont-size%3A11px%3Bfont-weight%3A400%3B%7D%20.lt%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3Btext-align%3Acenter%3B%7D%20.lt.na%7Bcolor%3A%238A99B3%3Bfont-size%3A11px%3Bfont-weight%3A400%3B%7D%20.pb2%7Bfont-size%3A10px%3Bfont-weight%3A700%3Bcolor%3A%23F0B429%3Bbackground%3Argba(240%2C180%2C41%2C0.1)%3Bpadding%3A2px%207px%3Bborder-radius%3A20px%3B%7D%20.tip%7Bbackground%3Argba(0%2C201%2C177%2C0.07)%3Bborder%3A1px%20solid%20rgba(0%2C201%2C177%2C0.2)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.6%3Bmargin-top%3A14px%3B%7D%20.tip%20strong%7Bcolor%3A%2300C9B1%3B%7D%20.sc%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A10px%3B%7D%20.si%7Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3B%7D%20.sit%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3Bmargin-bottom%3A4px%3B%7D%20.sib%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.6%3B%7D%20.dc%7Bdisplay%3Aflex%3Bflex-direction%3Acolumn%3Bgap%3A8px%3B%7D%20.di%7Bbackground%3Argba(20%2C34%2C64%2C0.8)%3Bborder%3A1px%20solid%20rgba(240%2C180%2C41%2C0.12)%3Bborder-radius%3A8px%3Bpadding%3A12px%2014px%3Bdisplay%3Aflex%3Bgap%3A12px%3Balign-items%3Aflex-start%3B%7D%20.dico%7Bfont-size%3A22px%3Bflex-shrink%3A0%3B%7D%20.dn%7Bfont-size%3A13px%3Bfont-weight%3A600%3Bcolor%3A%23F8F5EE%3B%7D%20.dl%7Bfont-size%3A10px%3Bcolor%3A%238A99B3%3Btext-transform%3Auppercase%3Bletter-spacing%3A1px%3Bmargin%3A2px%200%205px%3B%7D%20.dt%7Bfont-size%3A12px%3Bcolor%3A%238A99B3%3Bline-height%3A1.5%3B%7D%20%40media(max-width%3A500px)%7B.thd%2C.tr%7Bgrid-template-columns%3A1fr%2065px%3B%7D.thd%3E%3Anth-child(3)%2C.tr%3E%3Anth-child(3)%2C.thd%3E%3Anth-child(4)%2C.tr%3E%3Anth-child(4)%7Bdisplay%3Anone%3B%7D%7D%20%60%3B%20const%20state%3D%7Bpark%3A'MK'%2Cwpk%3A'MK'%2Cwdata%3A%7B%7D%7D%3B%20function%20injectCSS()%7Bconst%20s%3Ddocument.createElement('style')%3Bs.id%3D'pdp-css'%3Bs.textContent%3DCSS%3Bdocument.head.appendChild(s)%3B%7D%20function%20buildUI()%7B%20const%20o%3Ddocument.createElement('div')%3B%20o.id%3D'pdp'%3B%20o.innerHTML%3D%60%20%3Cdiv%20id%3D%22pdp-hd%22%3E%20%3Cdiv%20id%3D%22pdp-logo%22%3E%3Cdiv%20id%3D%22pdp-li%22%3E%E2%9C%A6%3C%2Fdiv%3E%3Cdiv%3E%3Ch1%3EPixie%20Dust%20Pro%3C%2Fh1%3E%3Cp%3EDisney%20Trip%20Intelligence%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22pdp-x%22%3E%E2%9C%95%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cnav%20id%3D%22pdp-tabs%22%3E%20%3Cdiv%20class%3D%22pt%20on%22%20data-t%3D%22w%22%3E%E2%8F%B1%20Wait%20Times%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22ll%22%3E%E2%9A%A1%20Lightning%20Lane%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22s%22%3E%F0%9F%97%BA%20Strategy%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pt%22%20data-t%3D%22d%22%3E%F0%9F%8D%BD%20Dining%3C%2Fdiv%3E%20%3C%2Fnav%3E%20%3Cdiv%20id%3D%22pdp-body%22%3E%20%3Cdiv%20class%3D%22pp%20on%22%20id%3D%22pp-w%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3ELive%20%3Cspan%3EWait%20Times%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EVia%20ThemeParks.wiki%20%C2%B7%20updates%20every%205%20min%20%C2%B7%20no%20login%20needed%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psel%22%20id%3D%22wps%22%3E%20%3Cbutton%20class%3D%22pb%20mk%22%20data-p%3D%22MK%22%3E%F0%9F%8F%B0%20Magic%20Kingdom%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22EP%22%3E%F0%9F%8C%90%20EPCOT%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22HS%22%3E%F0%9F%8E%AC%20Hollywood%20Studios%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22AK%22%3E%F0%9F%A6%81%20Animal%20Kingdom%3C%2Fbutton%3E%20%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22wstat%22%20class%3D%22stat%20ld%22%3E%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E%3Cspan%3ELoading%20wait%20times%E2%80%A6%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22wtbl%22%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22tip%22%3E%3Cstrong%3EBest%20standby%20times%3A%3C%2Fstrong%3E%20First%2045%20min%20after%20park%20open%2C%20and%20last%2030%E2%80%9360%20min%20before%20close.%20Midday%20is%20almost%20always%20the%20worst.%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-ll%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3ELightning%20Lane%20%3Cspan%3EReturns%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3ENext%20available%20return%20times%20from%20live%20data%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psel%22%20id%3D%22llps%22%3E%20%3Cbutton%20class%3D%22pb%20mk%22%20data-p%3D%22MK%22%3E%F0%9F%8F%B0%20Magic%20Kingdom%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22EP%22%3E%F0%9F%8C%90%20EPCOT%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22HS%22%3E%F0%9F%8E%AC%20Hollywood%20Studios%3C%2Fbutton%3E%20%3Cbutton%20class%3D%22pb%22%20data-p%3D%22AK%22%3E%F0%9F%A6%81%20Animal%20Kingdom%3C%2Fbutton%3E%20%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22llstat%22%20class%3D%22stat%20ld%22%3E%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E%3Cspan%3ELoading%20LL%20data%E2%80%A6%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20id%3D%22lltbl%22%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22tip%22%3E%3Cstrong%3EStrategy%3A%3C%2Fstrong%3E%20Book%20your%20highest-priority%20LL%20the%20instant%20your%20booking%20window%20opens.%20On%20high%20crowd%20days%20Tron%2C%20TIANA's%20and%20Guardians%20sell%20out%20within%20the%20first%20hour.%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-s%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3EFirst-Timer%20%3Cspan%3EStrategy%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EYour%20daily%20game%20plan%20for%20an%20incredible%20trip%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22sc%22%20id%3D%22strat%22%3E%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22pp%22%20id%3D%22pp-d%22%3E%20%3Cdiv%20class%3D%22ptitle%22%3EMust-Try%20%3Cspan%3EDining%3C%2Fspan%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22psub%22%3EBook%2060%20days%20out%20at%206am%20ET%20%E2%80%94%20these%20fill%20up%20fast%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22dc%22%20id%3D%22dining%22%3E%3C%2Fdiv%3E%20%3C%2Fdiv%3E%20%3C%2Fdiv%3E%60%3B%20document.body.appendChild(o)%3B%20%7D%20function%20setstat(id%2Cmsg%2Ctype)%7B%20const%20el%3Ddocument.getElementById(id)%3B%20if(!el)return%3B%20el.className%3D'stat%20'%2Btype%3B%20const%20spin%3Dtype%3D%3D%3D'ld'%3F'%3Cspan%20class%3D%22sp%22%3E%3C%2Fspan%3E'%3A'%3Cdiv%20class%3D%22sd%22%3E%3C%2Fdiv%3E'%3B%20el.innerHTML%3Dspin%2B'%3Cspan%3E'%2Bmsg%2B'%3C%2Fspan%3E'%3B%20%7D%20function%20renderTable(data%2CtblId%2CstatId%2Cmode)%7B%20const%20tbl%3Ddocument.getElementById(tblId)%3B%20if(!data%7C%7C!data.length)%7Btbl.innerHTML%3D'%3Cdiv%20style%3D%22padding%3A16px%3Btext-align%3Acenter%3Bcolor%3A%238A99B3%3Bfont-size%3A12px%3B%22%3ENo%20data%20available%20right%20now.%3C%2Fdiv%3E'%3Breturn%3B%7D%20const%20rows%3Ddata.slice(0%2C20).map(a%3D%3E%7B%20const%20wc%3Da.wait%3E%3D75%3F'hi2'%3Aa.wait%3E%3D45%3F'me'%3A'lo'%3B%20const%20isPri%3Da.priority%3E%3D10%3B%20const%20llT%3Dmode%3D%3D%3D'll'%3Fa.llTime%3Aa.llTime%3B%20const%20llAvail%3Dmode%3D%3D%3D'll'%3Fa.llAvail%3Aa.llAvail%3B%20const%20llShow%3DllT%7C%7CllAvail%3FllT%7C%7C'Available'%3A'None'%3B%20const%20llCls%3DllT%7C%7CllAvail%3F''%3A'na'%3B%20return%60%3Cdiv%20class%3D%22tr%24%7BisPri%3F'%20hi'%3A''%7D%22%3E%20%3Cdiv%3E%3Cdiv%20class%3D%22an%22%3E%24%7Ba.name%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22as%22%3E%24%7Ba.status%7C%7C''%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22wt%20%24%7Ba.wait%3Fwc%3A'na'%7D%22%3E%24%7Ba.wait%3Fa.wait%2B'%20min'%3A'%E2%80%94'%7D%3C%2Fdiv%3E%20%3Cdiv%20class%3D%22lt%20%24%7BllCls%7D%22%3E%24%7BllShow%7D%3C%2Fdiv%3E%20%3Cdiv%3E%24%7BisPri%3F'%3Cspan%20class%3D%22pb2%22%3E%E2%AD%90%20Book%201st%3C%2Fspan%3E'%3A'%3Cspan%20style%3D%22color%3A%238A99B3%3Bfont-size%3A11px%3B%22%3E%E2%80%94%3C%2Fspan%3E'%7D%3C%2Fdiv%3E%20%3C%2Fdiv%3E%60%3B%20%7D).join('')%3B%20tbl.innerHTML%3D%60%3Cdiv%20class%3D%22tbl%22%3E%20%3Cdiv%20class%3D%22thd%22%3E%3Cdiv%3EAttraction%3C%2Fdiv%3E%3Cdiv%20style%3D%22text-align%3Acenter%22%3EWait%3C%2Fdiv%3E%3Cdiv%20style%3D%22text-align%3Acenter%22%3E%24%7Bmode%3D%3D%3D'll'%3F'LL%20Return'%3A'LL%20Time'%7D%3C%2Fdiv%3E%3Cdiv%3EPriority%3C%2Fdiv%3E%3C%2Fdiv%3E%20%24%7Brows%7D%20%3C%2Fdiv%3E%60%3B%20%7D%20async%20function%20loadWaits(pk)%7B%20setstat('wstat'%2C'Loading%20'%2BPARK_NAMES%5Bpk%5D%2B'%E2%80%A6'%2C'ld')%3B%20document.getElementById('wtbl').innerHTML%3D''%3B%20try%7B%20const%20raw%3Dawait%20fetchWaits(THEMEPARKS%5Bpk%5D)%3B%20const%20data%3DnormalizeWaits(raw)%3B%20state.wdata%5Bpk%5D%3Ddata%3B%20renderTable(data%2C'wtbl'%2C'wstat'%2C'w')%3B%20setstat('wstat'%2CPARK_NAMES%5Bpk%5D%2B'%20%C2%B7%20Updated%20'%2Bnew%20Date().toLocaleTimeString()%2C'ok')%3B%20%7Dcatch(e)%7B%20setstat('wstat'%2C'Could%20not%20load%20%E2%80%94%20check%20connection'%2C'er')%3B%20%7D%20%7D%20async%20function%20loadLL(pk)%7B%20setstat('llstat'%2C'Loading%20LL%20data%20for%20'%2BPARK_NAMES%5Bpk%5D%2B'%E2%80%A6'%2C'ld')%3B%20document.getElementById('lltbl').innerHTML%3D''%3B%20try%7B%20const%20raw%3Dawait%20fetchWaits(THEMEPARKS%5Bpk%5D)%3B%20const%20all%3DnormalizeWaits(raw)%3B%20const%20llData%3Dall.filter(a%3D%3Ea.llAvail%7C%7Ca.llTime)%3B%20if(llData.length)%7B%20renderTable(llData%2C'lltbl'%2C'llstat'%2C'll')%3B%20setstat('llstat'%2C'LL%20data%20%C2%B7%20'%2BPARK_NAMES%5Bpk%5D%2B'%20%C2%B7%20'%2Bnew%20Date().toLocaleTimeString()%2C'ok')%3B%20%7Delse%7B%20document.getElementById('lltbl').innerHTML%3D'%3Cdiv%20style%3D%22padding%3A16px%3Btext-align%3Acenter%3Bcolor%3A%238A99B3%3Bfont-size%3A12px%3B%22%3ENo%20Lightning%20Lane%20return%20times%20available%20right%20now.%3Cbr%3E%3Cspan%20style%3D%22font-size%3A11px%3Bmargin-top%3A4px%3Bdisplay%3Ablock%3B%22%3ELL%20may%20not%20be%20active%20yet%20today%2C%20or%20all%20slots%20are%20booked.%3C%2Fspan%3E%3C%2Fdiv%3E'%3B%20setstat('llstat'%2C'No%20LL%20availability%20found%20for%20'%2BPARK_NAMES%5Bpk%5D%2C'wn')%3B%20%7D%20%7Dcatch(e)%7B%20setstat('llstat'%2C'Could%20not%20load%20LL%20data'%2C'er')%3B%20%7D%20%7D%20function%20renderStrategy()%7B%20document.getElementById('strat').innerHTML%3DSTRATEGY.map(s%3D%3E%60%20%3Cdiv%20class%3D%22si%22%3E%3Cdiv%20class%3D%22sit%22%3E%24%7Bs.icon%7D%20%24%7Bs.title%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22sib%22%3E%24%7Bs.body%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%20%60).join('')%3B%20%7D%20function%20renderDining()%7B%20document.getElementById('dining').innerHTML%3DDINING.map(r%3D%3E%60%20%3Cdiv%20class%3D%22di%22%3E%3Cdiv%20class%3D%22dico%22%3E%24%7Br.icon%7D%3C%2Fdiv%3E%3Cdiv%3E%3Cdiv%20class%3D%22dn%22%3E%24%7Br.name%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22dl%22%3E%24%7Br.loc%7D%20%C2%B7%20%24%7Br.type%7D%3C%2Fdiv%3E%3Cdiv%20class%3D%22dt%22%3E%24%7Br.tip%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%20%60).join('')%3B%20%7D%20function%20wire()%7B%20document.getElementById('pdp-x').onclick%3D()%3D%3Edocument.getElementById('pdp').style.display%3D'none'%3B%20document.querySelectorAll('.pt').forEach(t%3D%3E%7B%20t.onclick%3D()%3D%3E%7B%20document.querySelectorAll('.pt').forEach(x%3D%3Ex.classList.remove('on'))%3B%20document.querySelectorAll('.pp').forEach(x%3D%3Ex.classList.remove('on'))%3B%20t.classList.add('on')%3B%20document.getElementById('pp-'%2Bt.dataset.t).classList.add('on')%3B%20%7D%3B%20%7D)%3B%20function%20setParkBtn(selId%2CactiveClass)%7B%20document.querySelectorAll('%23'%2BselId%2B'%20.pb').forEach(b%3D%3E%7B%20b.onclick%3D()%3D%3E%7B%20document.querySelectorAll('%23'%2BselId%2B'%20.pb').forEach(x%3D%3E%7Bx.className%3D'pb'%3B%7D)%3B%20b.className%3D'pb%20'%2BactiveClass%5Bb.dataset.p%5D%3B%20if(selId%3D%3D%3D'wps')%7Bstate.wpk%3Db.dataset.p%3BloadWaits(b.dataset.p)%3B%7D%20else%7Bstate.park%3Db.dataset.p%3BloadLL(b.dataset.p)%3B%7D%20%7D%3B%20%7D)%3B%20%7D%20const%20cls%3D%7BMK%3A'mk'%2CEP%3A'ep'%2CHS%3A'hs'%2CAK%3A'ak'%7D%3B%20setParkBtn('wps'%2Ccls)%3B%20setParkBtn('llps'%2Ccls)%3B%20%7D%20injectCSS()%3B%20buildUI()%3B%20wire()%3B%20renderStrategy()%3B%20renderDining()%3B%20loadWaits('MK')%3B%20loadLL('MK')%3B%20%7D)()%3B';
+    document.getElementById('pdp-link').href = BM;
+    document.getElementById('codeEl').textContent = BM;
 
-  <div class="features">
-    <div class="feature">
-      <div class="f-icon">⚡</div>
-      <div class="f-label">Live LL Data</div>
-      <div class="f-sub">Real next-available times from Disney's servers</div>
-    </div>
-    <div class="feature">
-      <div class="f-icon">⏱</div>
-      <div class="f-label">Wait Times</div>
-      <div class="f-sub">All 4 parks updated every 5 minutes</div>
-    </div>
-    <div class="feature">
-      <div class="f-icon">🗺</div>
-      <div class="f-label">Strategy</div>
-      <div class="f-sub">Rope drop, park hop, and LL booking guides</div>
-    </div>
-    <div class="feature">
-      <div class="f-icon">🍽</div>
-      <div class="f-label">Dining Tips</div>
-      <div class="f-sub">Must-book restaurants and reservation strategy</div>
-    </div>
-  </div>
+    function showP(id, btn){
+      document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+      document.querySelectorAll('.psteps').forEach(s=>s.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById('ps-'+id).classList.add('on');
+    }
 
-  <!-- DRAG TARGET -->
-  <div class="drag-target-section">
-    <h3>Step 1 — Save the Bookmarklet</h3>
-    <p>Drag this button to your browser's bookmarks bar. On mobile, see the steps below.</p>
-
-    <!-- This href is populated by JS with the actual minified bookmarklet code -->
-    <a id="pdp-bookmarklet-link" href="#" title="Pixie Dust Pro — drag me to your bookmarks bar">
-      ✦ Pixie Dust Pro
-    </a>
-
-    <div class="drag-hint">
-      <span class="drag-arrow">↑</span>
-      Drag this up to your bookmarks bar
-    </div>
-  </div>
-
-  <!-- SETUP STEPS BY PLATFORM -->
-  <div class="steps-card">
-    <h3>Setup Instructions</h3>
-
-    <div class="platform-tabs">
-      <button class="platform-tab active" onclick="showPlatform('desktop')">🖥 Desktop</button>
-      <button class="platform-tab" onclick="showPlatform('iphone')">📱 iPhone</button>
-      <button class="platform-tab" onclick="showPlatform('android')">🤖 Android</button>
-    </div>
-
-    <!-- Desktop -->
-    <div class="platform-steps active" id="steps-desktop">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>Show your bookmarks bar</strong>
-          <p>In Chrome: <code>Ctrl+Shift+B</code> (Windows) or <code>⌘+Shift+B</code> (Mac). In Safari: View → Show Favorites Bar.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Drag the gold button to the bar</strong>
-          <p>Click and drag the "✦ Pixie Dust Pro" button above into your bookmarks bar. It will save as a bookmark automatically.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>Go to Disney's Lightning Lane page</strong>
-          <p>Navigate to <code>disneyworld.disney.go.com/vas/</code> and sign in to your Disney account.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Click the bookmarklet</strong>
-          <p>Click "✦ Pixie Dust Pro" in your bookmarks bar. The overlay will appear over Disney's page with your live LL data.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- iPhone -->
-    <div class="platform-steps" id="steps-iphone">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>Copy the bookmarklet code</strong>
-          <p>Tap the button below to copy the code to your clipboard.</p>
-          <div class="code-fallback" id="code-display">Loading…</div>
-          <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Bookmark any page in Safari</strong>
-          <p>Tap the Share button (box with arrow), then "Add Bookmark". Save it as <strong style="color:#F8F5EE">Pixie Dust Pro</strong>.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>Edit the bookmark's URL</strong>
-          <p>Open your Bookmarks, find "Pixie Dust Pro", and tap Edit. Delete the URL field entirely, then paste the code you copied.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Use it at Disney</strong>
-          <p>Go to <code>disneyworld.disney.go.com/vas/</code> and sign in. Tap the address bar, type <strong style="color:#F8F5EE">Pixie Dust</strong>, and tap the bookmark. Done!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Android -->
-    <div class="platform-steps" id="steps-android">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>Copy the bookmarklet code</strong>
-          <div class="code-fallback">Same code as shown in the iPhone tab above — tap Copy Code there.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Bookmark this page in Chrome</strong>
-          <p>Tap the ⋮ menu → "Add to bookmarks". Save as <strong style="color:#F8F5EE">Pixie Dust Pro</strong>.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>Edit the bookmark URL</strong>
-          <p>Open Chrome bookmarks → long-press "Pixie Dust Pro" → Edit. Replace the URL with the copied code.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Activate at Disney</strong>
-          <p>On <code>disneyworld.disney.go.com/vas/</code>, type <strong style="color:#F8F5EE">Pixie Dust</strong> in the address bar and tap the bookmark suggestion.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="warning">
-    <strong>⚠️ Unofficial Tool</strong> — Pixie Dust Pro is not affiliated with or endorsed by The Walt Disney Company. Disney can change their APIs at any time. Use at your own risk and always use the official My Disney Experience app for actual bookings.
-  </div>
-
-  <div class="privacy">
-    <strong>🔒 Your privacy:</strong> The bookmarklet reads a temporary auth token that Disney stores in your browser after login. This token is only valid for 24 hours and is used solely to call Disney's own servers. No credentials, personal data, or tokens are ever transmitted to any third-party server.
-  </div>
-
-</div>
-
-<script>
-  // ── BUILD BOOKMARKLET HREF ──────────────────────────────────────────────────
-  // Replace this URL with wherever you host pixie-dust-pro.js
-  // (e.g. https://YOUR-USERNAME.github.io/pixie-dust-pro/pixie-dust-pro.js)
-  const HOSTED_JS_URL = 'https://mfert00.github.io/pixie-dust-pro/pixie-dust-pro.js';
-
-  // The bookmarklet dynamically loads the hosted JS file
-  // This way you can update the app without users re-installing the bookmarklet
-  const bookmarkletCode = `javascript:(function(){if(document.getElementById('pdp-overlay')){document.getElementById('pdp-overlay').style.display='flex';return;}var s=document.createElement('script');s.src='${HOSTED_JS_URL}?t='+Date.now();s.onerror=function(){alert('Pixie Dust Pro: Could not load. Check your connection.');};document.head.appendChild(s);})();`;
-
-  // Wire up the draggable link
-  document.getElementById('pdp-bookmarklet-link').href = bookmarkletCode;
-  document.getElementById('code-display').textContent = bookmarkletCode;
-
-  // ── PLATFORM TABS ─────────────────────────────────────────────────────────
-  function showPlatform(id) {
-    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.platform-steps').forEach(s => s.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById(`steps-${id}`).classList.add('active');
-  }
-
-  // ── COPY CODE ──────────────────────────────────────────────────────────────
-  function copyCode() {
-    navigator.clipboard.writeText(bookmarkletCode).then(() => {
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = 'Copied! ✓';
-      btn.style.background = 'rgba(0,201,177,0.15)';
-      btn.style.color = '#00C9B1';
-      btn.style.borderColor = 'rgba(0,201,177,0.3)';
-      setTimeout(() => {
-        btn.textContent = 'Copy Code';
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.style.borderColor = '';
-      }, 2500);
-    });
-  }
-</script>
+    function copyCode(){
+      navigator.clipboard.writeText(BM).then(()=>{
+        const b=document.querySelector('.copybtn');
+        b.textContent='Copied! ✓';b.style.color='#00C9B1';b.style.borderColor='rgba(0,201,177,0.3)';
+        setTimeout(()=>{b.textContent='Copy Code';b.style.color='';b.style.borderColor='';},2500);
+      });
+    }
+    </script>
 </body>
 </html>
